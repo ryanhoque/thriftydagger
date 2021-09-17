@@ -1,5 +1,7 @@
 # ThriftyDAgger
 
+Code for the ThriftyDAgger algorithm. See the [website](https://sites.google.com/view/thrifty-dagger/home) for the paper and other materials.
+
 ## Installation
 
 0. Start a Python virtual environment to self-contain all the code:
