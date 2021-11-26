@@ -3,13 +3,15 @@ from thrifty.algos.thriftydagger import thrifty, generate_offline_data
 from thrifty.algos.lazydagger import lazy
 from thrifty.utils.run_utils import setup_logger_kwargs
 import gym, torch
+import os
 import robosuite as suite
 from robosuite import load_controller_config
 from robosuite.utils.input_utils import input2action
 from thrifty.utils.hardcoded_nut_assembly import HardcodedPolicy
+from thrifty.utils.hardcoded_pick_place import HardcodedPickPlacePolicy, HardcodedStochasticPickPlacePolicy
 from robosuite.wrappers import VisualizationWrapper
 from robosuite.wrappers import GymWrapper
-from robosuite.devices import Keyboard, SpaceMouse
+from robosuite.devices import Keyboard
 import numpy as np
 import sys
 import time
@@ -66,17 +68,24 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('exp_name', type=str)
-    parser.add_argument('--seed', '-s', type=int, default=0)
+    parser.add_argument('--seed', '-s', type=int, default=4)
     parser.add_argument('--device', type=int, default=-1)
     parser.add_argument('--gen_data', action='store_true', help="True if you want to collect offline human demos")
+    parser.add_argument('--input_file', type=str, default='./data/testpickplace/testpickplace_s4/pick-place-data.pkl')
     parser.add_argument('--iters', type=int, default=5, help="number of DAgger-style iterations")
     parser.add_argument('--targetrate', type=float, default=0.01, help="target context switching rate")
     parser.add_argument('--environment', type=str, default="NutAssembly")
+    parser.add_argument('--num_test_episodes', type=int, default=10, help='number of test episodes for autonomous rollout / data collection')
     parser.add_argument('--no_render', action='store_true')
     parser.add_argument('--hgdagger', action='store_true')
     parser.add_argument('--lazydagger', action='store_true')
+    parser.add_argument('--bc_only', action='store_true')
+    parser.add_argument('--stochastic_expert', action='store_true')
     parser.add_argument('--eval', type=str, default=None, help="filepath to saved pytorch model to initialize weights")
     parser.add_argument('--algo_sup', action='store_true', help="use an algorithmic supervisor")
+    parser.add_argument('--gen_data_output', type=str, default='pick-place-data', help='Output location for recorded demonstrations; used in conjunction wtih --gen_data.')
+    parser.add_argument('--test_intervention_eps', type=int, default=None)
+    parser.add_argument('--hg_oracle_thresh', type=float, default=0.2)
     args = parser.parse_args()
     render = not args.no_render
 
@@ -104,6 +113,21 @@ if __name__ == '__main__':
             hard_reset=True,
             use_object_obs=True
         )
+    elif args.environment == 'PickPlace':
+        env = suite.make(
+            **config,
+            has_renderer=render,
+            has_offscreen_renderer=False,
+            render_camera="agentview",
+            single_object_mode=2,
+            object_type='cereal',
+            ignore_done=True,
+            use_camera_obs=False,
+            reward_shaping=True,
+            control_freq=20,
+            hard_reset=True,
+            use_object_obs=True
+        )
     else:
         env = suite.make(
             **config,
@@ -117,6 +141,7 @@ if __name__ == '__main__':
             hard_reset=True,
             use_object_obs=True
         )
+    print(env._observables.keys())
     env = GymWrapper(env)
     env = VisualizationWrapper(env, indicator_configs=None)
     env = CustomWrapper(env, render=render)
@@ -163,23 +188,35 @@ if __name__ == '__main__':
             env.render()
             time.sleep(0.001)
         return a
-
-    robosuite_cfg = {'MAX_EP_LEN': 175, 'INPUT_DEVICE': input_device}
+    
+    robosuite_cfg = {'MAX_EP_LEN': 200, 'INPUT_DEVICE': input_device}
+    os.makedirs(logger_kwargs['output_dir'])
     if args.algo_sup:
-        expert_pol = HardcodedPolicy(env).act
+        if args.environment == 'NutAssembly':
+            expert_pol = HardcodedPolicy(env).act
+        elif args.environment == 'PickPlace':
+            if args.stochastic_expert:
+                expert_pol = HardcodedStochasticPickPlacePolicy(env)
+            else:
+                expert_pol = HardcodedPickPlacePolicy(env).act
     if args.gen_data:
     	NUM_BC_EPISODES = 30
+    	out_file = os.path.join(logger_kwargs['output_dir'], f'{args.gen_data_output}-{NUM_BC_EPISODES}.pkl')
     	generate_offline_data(env, expert_policy=expert_pol, num_episodes=NUM_BC_EPISODES, seed=args.seed,
-            output_file="robosuite-{}.pkl".format(NUM_BC_EPISODES), robosuite=True, robosuite_cfg=robosuite_cfg)
+            output_file=out_file, robosuite=True, robosuite_cfg=robosuite_cfg, stochastic_expert=args.stochastic_expert)
     if args.hgdagger:
         thrifty(env, iters=args.iters, logger_kwargs=logger_kwargs, device_idx=args.device, target_rate=args.targetrate, 
-            seed=args.seed, expert_policy=expert_pol, input_file="robosuite-30.pkl", robosuite=True, 
-            robosuite_cfg=robosuite_cfg, num_nets=1, hg_dagger=hg_dagger_wait, init_model=args.eval)
+            seed=args.seed, expert_policy=expert_pol, input_file=args.input_file, robosuite=True, 
+            robosuite_cfg=robosuite_cfg, num_nets=1, hg_dagger=hg_dagger_wait, init_model=args.eval, 
+            num_test_episodes=args.num_test_episodes, test_intervention_eps=args.test_intervention_eps, 
+            stochastic_expert=args.stochastic_expert, hg_oracle_thresh=args.hg_oracle_thresh)
     elif args.lazydagger:
         lazy(env, iters=args.iters, logger_kwargs=logger_kwargs, device_idx=args.device, noise=0.,
-         seed=args.seed, expert_policy=expert_pol, input_file="robosuite-30.pkl", robosuite=True, 
-           robosuite_cfg=robosuite_cfg)
+         seed=args.seed, expert_policy=expert_pol, input_file=args.input_file, robosuite=True, 
+           robosuite_cfg=robosuite_cfg, init_model=args.eval, num_test_episodes=args.num_test_episodes, test_intervention_eps=args.test_intervention_eps, stochastic_expert=args.stochastic_expert)
     else:
         thrifty(env, iters=args.iters, logger_kwargs=logger_kwargs, device_idx=args.device, target_rate=args.targetrate, 
-         	seed=args.seed, expert_policy=expert_pol, input_file="robosuite-30.pkl", robosuite=True, 
-            robosuite_cfg=robosuite_cfg, q_learning=True, init_model=args.eval)
+         	seed=args.seed, expert_policy=expert_pol, input_file=args.input_file, robosuite=True, 
+            robosuite_cfg=robosuite_cfg, q_learning=True, init_model=args.eval, bc_only=args.bc_only, 
+            num_test_episodes=args.num_test_episodes, test_intervention_eps=args.test_intervention_eps, 
+            stochastic_expert=args.stochastic_expert, algo_sup=args.algo_sup)

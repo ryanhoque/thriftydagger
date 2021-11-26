@@ -2,6 +2,26 @@
 
 Code for the ThriftyDAgger algorithm. See the [website](https://sites.google.com/view/thrifty-dagger/home) for the paper and other materials.
 
+# Instructions for generating data + training
+1. Create a virtual environment:
+    ```
+    conda create --name thriftydagger python=3.8;
+    conda activate thriftydagger
+    ```
+2. Install necessary packages:
+    - Install MuJoCo (see the https://github.com/openai/mujoco-py README). You will need an access key.
+    - Run: 
+        ```
+        pip install -e .
+        ```
+3. Collect demonstration data. Run:
+    ```
+    python run_thriftydagger.py --generate_data
+    ```
+
+
+
+# ======= original readme =======
 ## Installation
 
 0. Start a Python virtual environment to self-contain all the code:

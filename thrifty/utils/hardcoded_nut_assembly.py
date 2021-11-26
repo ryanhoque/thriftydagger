@@ -8,7 +8,7 @@ class HardcodedPolicy():
         self.env = env
         self.last_turn = None # whether we last turned CW or CCW
 
-    def act(self, o):
+    def act(self, o): 
         obj_pos, obj_quat = o[:3], o[3:7]
         rel_quat = o[10:14]
         eef_pos, eef_quat = o[32:35], o[35:39]
