@@ -99,7 +99,7 @@ def lazy(env, iters=10, actor_critic=core.MLP, ac_kwargs=dict(),
     batch_size=100, logger_kwargs=dict(), num_test_episodes=100, bc_epochs=5, noise=0.,
     input_file='data.pkl', device_idx=0, expert_policy=None,
     robosuite=False, robosuite_cfg=None, 
-    tau_sup=0.008, tau_auto=0.25, init_model=None, test_intervention_eps=None, stochastic_expert=False):
+    tau_sup=0.008, tau_auto=0.25, init_model=None, test_intervention_eps=None, stochastic_expert=False, algo_sup=False):
     """
     input_file: where initial BC data is stored
     robosuite: whether to enable robosuite specific code (and use robosuite_cfg)
@@ -112,10 +112,11 @@ def lazy(env, iters=10, actor_critic=core.MLP, ac_kwargs=dict(),
     del _locals['expert_policy']
     
     logger.save_config(_locals)
-    if device_idx >= 0:
-        device = torch.device("cuda", device_idx)
-    else:
-        device = torch.device("cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # if device_idx >= 0:
+    #     device = torch.device("cuda", device_idx)
+    # else:
+    #     device = torch.device("cpu")
 
     torch.manual_seed(seed)
     np.random.seed(seed)
@@ -151,7 +152,8 @@ def lazy(env, iters=10, actor_critic=core.MLP, ac_kwargs=dict(),
                     rew.append(int(env._check_success()))
                 ep_ret += r
                 ep_len += 1
-            print('episode #{} success? {}'.format(j, rew[-1]))
+            if env._render:
+                print('episode #{} success? {}'.format(j, rew[-1]))
             if robosuite:
                 env.close()
         print('Test Success Rate:', sum(rew)/num_test_episodes)
@@ -295,7 +297,8 @@ def lazy(env, iters=10, actor_critic=core.MLP, ac_kwargs=dict(),
                     online_burden += 1
                     #if ac.classify(o) >= 0.5: # uncomment this line and comment the one below to use SafeDAgger switching
                     if sum((a - a_expert) ** 2) < safety_threshold * tau_auto: 
-                        print("Switch to Robot")
+                        if env._render:
+                            print("Switch to Robot")
                         expert_mode = False 
                         num_switches_to_robot += 1
                         o, _, d, _ = env.step(a_expert)
@@ -305,7 +308,8 @@ def lazy(env, iters=10, actor_critic=core.MLP, ac_kwargs=dict(),
                     sup.append(1)
                     disc.append(sum((a - a_expert)**2))
                 elif ac.classify(o) < 0.5:
-                    print("Switch to Human")
+                    if env._render:
+                        print("Switch to Human")
                     num_switches_to_human += 1
                     expert_mode = True
                     continue
@@ -358,7 +362,7 @@ def lazy(env, iters=10, actor_critic=core.MLP, ac_kwargs=dict(),
 
 
 
-        logger.save_state(dict())
+        logger.save_state(dict(), itr=t)
         logger.log_tabular('Epoch', t)
         logger.log_tabular('TotalEnvInteracts', total_env_interacts)
         if test_intervention_eps == None:

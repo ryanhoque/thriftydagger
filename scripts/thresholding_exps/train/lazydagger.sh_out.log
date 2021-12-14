@@ -1,0 +1,4200 @@
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7effcd8b1a00>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7effcd80f370>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.01,
+    "tau_sup":	0.032,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.151 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.125 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.123 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.118 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.113 |
+---------------------------------------
+3.6538461538461537% of BC data points are not safe with threshold 0.032
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.261 |
+|          LossSafe |           0.114 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.259 |
+|          LossSafe |           0.161 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.249 |
+|          LossSafe |           0.105 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.246 |
+|          LossSafe |           0.114 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.237 |
+|          LossSafe |           0.161 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f69a49fb9d0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f69518feb50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.1,
+    "tau_sup":	0.032,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.151 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.125 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.123 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.118 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.113 |
+---------------------------------------
+3.6538461538461537% of BC data points are not safe with threshold 0.032
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.261 |
+|          LossSafe |           0.114 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.239 |
+|          LossSafe |           0.168 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.234 |
+|          LossSafe |           0.131 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.229 |
+|          LossSafe |           0.144 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.222 |
+|          LossSafe |           0.111 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f2b03dcca60>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f2ab0ccfa00>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.25,
+    "tau_sup":	0.032,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.151 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.125 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.123 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.118 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.113 |
+---------------------------------------
+3.6538461538461537% of BC data points are not safe with threshold 0.032
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.261 |
+|          LossSafe |           0.114 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.255 |
+|          LossSafe |           0.113 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.249 |
+|          LossSafe |          0.0994 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.244 |
+|          LossSafe |          0.0947 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.233 |
+|          LossSafe |           0.114 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f06523a6940>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f05ff2a9a00>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.5,
+    "tau_sup":	0.032,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.151 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.125 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.123 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.118 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.113 |
+---------------------------------------
+3.6538461538461537% of BC data points are not safe with threshold 0.032
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.263 |
+|          LossSafe |             0.1 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.249 |
+|          LossSafe |           0.111 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.243 |
+|          LossSafe |           0.115 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.233 |
+|          LossSafe |          0.0925 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.218 |
+|          LossSafe |          0.0973 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f6a148e59d0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f69c17e8b50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	1.0,
+    "tau_sup":	0.032,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.151 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.125 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.123 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.118 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.113 |
+---------------------------------------
+3.6538461538461537% of BC data points are not safe with threshold 0.032
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.263 |
+|          LossSafe |             0.1 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.249 |
+|          LossSafe |           0.111 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.243 |
+|          LossSafe |           0.115 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.233 |
+|          LossSafe |          0.0925 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.228 |
+|          LossSafe |           0.131 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7fc42ad069d0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7fc3d7c09b50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.01,
+    "tau_sup":	0.016,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.478 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.468 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.464 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.459 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.454 |
+---------------------------------------
+19.153846153846153% of BC data points are not safe with threshold 0.016
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.269 |
+|          LossSafe |           0.339 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.253 |
+|          LossSafe |           0.439 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.251 |
+|          LossSafe |           0.358 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.243 |
+|          LossSafe |           0.361 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.241 |
+|          LossSafe |           0.394 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f4506bcb9d0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f44b3aceb50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.1,
+    "tau_sup":	0.016,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.478 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.468 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.464 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.459 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.454 |
+---------------------------------------
+19.153846153846153% of BC data points are not safe with threshold 0.016
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.269 |
+|          LossSafe |           0.339 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.255 |
+|          LossSafe |           0.357 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.249 |
+|          LossSafe |           0.447 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.245 |
+|          LossSafe |           0.407 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.243 |
+|          LossSafe |            0.41 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7efd1b6b5fa0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7efcc85beb50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.25,
+    "tau_sup":	0.016,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.478 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.468 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.464 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.459 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.454 |
+---------------------------------------
+19.153846153846153% of BC data points are not safe with threshold 0.016
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.269 |
+|          LossSafe |           0.339 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.255 |
+|          LossSafe |           0.357 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.249 |
+|          LossSafe |           0.447 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.238 |
+|          LossSafe |           0.383 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.234 |
+|          LossSafe |            0.36 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7fe9931469d0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7fe940049b50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.5,
+    "tau_sup":	0.016,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.478 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.468 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.464 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.459 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.454 |
+---------------------------------------
+19.153846153846153% of BC data points are not safe with threshold 0.016
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.269 |
+|          LossSafe |           0.339 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.255 |
+|          LossSafe |           0.357 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.246 |
+|          LossSafe |           0.409 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.236 |
+|          LossSafe |           0.378 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.245 |
+|          LossSafe |           0.405 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f23c8bd59d0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f2375ad8ca0>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	1.0,
+    "tau_sup":	0.016,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.478 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.468 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.464 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.459 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.454 |
+---------------------------------------
+19.153846153846153% of BC data points are not safe with threshold 0.016
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.269 |
+|          LossSafe |           0.339 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.251 |
+|          LossSafe |           0.441 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.248 |
+|          LossSafe |           0.423 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |            0.24 |
+|          LossSafe |           0.332 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.236 |
+|          LossSafe |           0.366 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7fda337d7940>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7fd9e06daa00>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.01,
+    "tau_sup":	0.008,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.582 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.555 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |            0.53 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.507 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.484 |
+---------------------------------------
+28.076923076923077% of BC data points are not safe with threshold 0.008
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.289 |
+|          LossSafe |           0.509 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.295 |
+|          LossSafe |           0.497 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.289 |
+|          LossSafe |           0.494 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.292 |
+|          LossSafe |           0.479 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |            0.29 |
+|          LossSafe |            0.47 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7fd174ee39d0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7fd121de6b50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.1,
+    "tau_sup":	0.008,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.582 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.555 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |            0.53 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.507 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.484 |
+---------------------------------------
+28.076923076923077% of BC data points are not safe with threshold 0.008
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.303 |
+|          LossSafe |           0.515 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.284 |
+|          LossSafe |           0.478 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.293 |
+|          LossSafe |           0.501 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.297 |
+|          LossSafe |           0.493 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.288 |
+|          LossSafe |           0.468 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f2a31f7f9d0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f29dee82b50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.25,
+    "tau_sup":	0.008,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.582 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.555 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |            0.53 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.507 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.484 |
+---------------------------------------
+28.076923076923077% of BC data points are not safe with threshold 0.008
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.296 |
+|          LossSafe |           0.509 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.293 |
+|          LossSafe |             0.5 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.288 |
+|          LossSafe |             0.5 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.284 |
+|          LossSafe |           0.494 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.276 |
+|          LossSafe |           0.491 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7efe510f19d0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7efdfdff4b50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.5,
+    "tau_sup":	0.008,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.582 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.555 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |            0.53 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.507 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.484 |
+---------------------------------------
+28.076923076923077% of BC data points are not safe with threshold 0.008
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |            0.29 |
+|          LossSafe |            0.52 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |            0.29 |
+|          LossSafe |            0.51 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.293 |
+|          LossSafe |           0.504 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.292 |
+|          LossSafe |           0.489 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |            0.29 |
+|          LossSafe |           0.483 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f5e2bf249d0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f5dd8e27b50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	1.0,
+    "tau_sup":	0.008,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.582 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.555 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |            0.53 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.507 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.484 |
+---------------------------------------
+28.076923076923077% of BC data points are not safe with threshold 0.008
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.288 |
+|          LossSafe |           0.522 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.268 |
+|          LossSafe |           0.522 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.273 |
+|          LossSafe |           0.503 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.274 |
+|          LossSafe |            0.51 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.278 |
+|          LossSafe |           0.491 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7fc1e1005940>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7fc18df0fb50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.01,
+    "tau_sup":	0.004,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.627 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.544 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.497 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.463 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.439 |
+---------------------------------------
+42.96153846153846% of BC data points are not safe with threshold 0.004
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.289 |
+|          LossSafe |           0.457 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.283 |
+|          LossSafe |           0.494 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.274 |
+|          LossSafe |           0.477 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.268 |
+|          LossSafe |           0.437 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.265 |
+|          LossSafe |           0.441 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7ffb4b946970>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7ffaf8849a30>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.1,
+    "tau_sup":	0.004,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.627 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.544 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.497 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.463 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.439 |
+---------------------------------------
+42.96153846153846% of BC data points are not safe with threshold 0.004
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.298 |
+|          LossSafe |           0.418 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.291 |
+|          LossSafe |           0.405 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.293 |
+|          LossSafe |           0.411 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.294 |
+|          LossSafe |           0.421 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.289 |
+|          LossSafe |           0.469 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7fa61ecc9af0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7fa5cbbccb80>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.25,
+    "tau_sup":	0.004,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.627 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.544 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.497 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.463 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.439 |
+---------------------------------------
+42.96153846153846% of BC data points are not safe with threshold 0.004
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.298 |
+|          LossSafe |           0.519 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.287 |
+|          LossSafe |           0.379 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.295 |
+|          LossSafe |           0.395 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.291 |
+|          LossSafe |           0.407 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.294 |
+|          LossSafe |           0.484 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f8248e182e0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f81f5d1ba30>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.5,
+    "tau_sup":	0.004,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.627 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.544 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.497 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.463 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.439 |
+---------------------------------------
+42.96153846153846% of BC data points are not safe with threshold 0.004
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.297 |
+|          LossSafe |           0.486 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.281 |
+|          LossSafe |           0.416 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |            0.29 |
+|          LossSafe |           0.512 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.295 |
+|          LossSafe |           0.508 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.291 |
+|          LossSafe |           0.499 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f26194e8af0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f25c63ebb80>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	1.0,
+    "tau_sup":	0.004,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.627 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.544 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.497 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.463 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.439 |
+---------------------------------------
+42.96153846153846% of BC data points are not safe with threshold 0.004
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.299 |
+|          LossSafe |           0.532 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |             0.3 |
+|          LossSafe |           0.482 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.307 |
+|          LossSafe |           0.392 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.311 |
+|          LossSafe |           0.414 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.306 |
+|          LossSafe |           0.394 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f5056071fd0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f5002f7ab80>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.01,
+    "tau_sup":	0.002,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.595 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.472 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.377 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.328 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.307 |
+---------------------------------------
+60.03846153846154% of BC data points are not safe with threshold 0.002
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.286 |
+|          LossSafe |           0.358 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.278 |
+|          LossSafe |           0.378 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.274 |
+|          LossSafe |           0.371 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.275 |
+|          LossSafe |           0.475 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.264 |
+|          LossSafe |           0.354 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7fae74cf1130>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7fae21bf4a30>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.1,
+    "tau_sup":	0.002,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.595 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.472 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.377 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.328 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.307 |
+---------------------------------------
+60.03846153846154% of BC data points are not safe with threshold 0.002
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.298 |
+|          LossSafe |           0.403 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.293 |
+|          LossSafe |           0.421 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.285 |
+|          LossSafe |           0.391 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |            0.28 |
+|          LossSafe |           0.404 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.272 |
+|          LossSafe |           0.321 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f31d335d970>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f3180260a30>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.25,
+    "tau_sup":	0.002,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.595 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.472 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.377 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.328 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.307 |
+---------------------------------------
+60.03846153846154% of BC data points are not safe with threshold 0.002
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.302 |
+|          LossSafe |           0.304 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.292 |
+|          LossSafe |           0.417 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.284 |
+|          LossSafe |           0.301 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.284 |
+|          LossSafe |           0.379 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.284 |
+|          LossSafe |            0.39 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f3b23626af0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f3ad0529b80>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.5,
+    "tau_sup":	0.002,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.595 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.472 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.377 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.328 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.307 |
+---------------------------------------
+60.03846153846154% of BC data points are not safe with threshold 0.002
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.302 |
+|          LossSafe |           0.483 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.298 |
+|          LossSafe |           0.432 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.296 |
+|          LossSafe |           0.349 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |            0.29 |
+|          LossSafe |           0.308 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.293 |
+|          LossSafe |           0.415 |
+---------------------------------------
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0",
+    "grad_steps":	500,
+    "init_model":	null,
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	5,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f39211fe3d0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	10,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f38ce101a30>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	1.0,
+    "tau_sup":	0.002,
+    "test_intervention_eps":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |             0.4 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.284 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.253 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.234 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |           0.215 |
+|          LossSafe |               0 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.595 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.472 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.377 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.328 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |               0 |
+|            LossPi |               0 |
+|          LossSafe |           0.307 |
+---------------------------------------
+60.03846153846154% of BC data points are not safe with threshold 0.002
+---------------------------------------
+|             Epoch |               0 |
+| TotalEnvInteracts |           2e+03 |
+|            LossPi |           0.303 |
+|          LossSafe |           0.408 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               1 |
+| TotalEnvInteracts |           4e+03 |
+|            LossPi |           0.298 |
+|          LossSafe |           0.331 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               2 |
+| TotalEnvInteracts |           6e+03 |
+|            LossPi |           0.301 |
+|          LossSafe |           0.486 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               3 |
+| TotalEnvInteracts |           8e+03 |
+|            LossPi |           0.298 |
+|          LossSafe |           0.331 |
+---------------------------------------
+---------------------------------------
+|             Epoch |               4 |
+| TotalEnvInteracts |           1e+04 |
+|            LossPi |           0.292 |
+|          LossSafe |           0.397 |
+---------------------------------------

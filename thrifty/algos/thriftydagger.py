@@ -199,10 +199,11 @@ def thrifty(env, iters=5, actor_critic=core.Ensemble, ac_kwargs=dict(),
     del _locals['env']
     del _locals['expert_policy']
     logger.save_config(_locals)
-    if device_idx >= 0:
-        device = torch.device("cuda", device_idx)
-    else:
-        device = torch.device("cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # if device_idx >= 0:
+    #     device = torch.device("cuda", device_idx)
+    # else:
+    #     device = torch.device("cpu")
     if stochastic_expert:
         expert_policy_cls = expert_policy
         expert_policy = expert_policy.act
@@ -330,7 +331,8 @@ def thrifty(env, iters=5, actor_critic=core.Ensemble, ac_kwargs=dict(),
                     rew.append(int(env._check_success()))
                 ep_ret += r
                 ep_len += 1
-            print('episode #{} success? {}'.format(j, rew[-1]))
+            if env._render:
+                print('episode #{} success? {}'.format(j, rew[-1]))
             if robosuite:
                 env.close()
         print('Test Success Rate:', sum(rew)/num_test_episodes)
@@ -339,7 +341,7 @@ def thrifty(env, iters=5, actor_critic=core.Ensemble, ac_kwargs=dict(),
         # env.viewer = viewer
         # env.has_renderer = True
         # env.renderer = renderer
-        env._render = render
+        # env._render = render
 
     if iters == 0 and num_test_episodes > 0: # only run evaluation.
         test_agent(0)
@@ -429,7 +431,8 @@ def thrifty(env, iters=5, actor_critic=core.Ensemble, ac_kwargs=dict(),
                     if (hg_dagger and (hg_dagger() or (algo_sup and sum((a - a_expert) ** 2) < hg_oracle_thresh))) \
                         or (not hg_dagger and sum((a - a_expert) ** 2) < switch2robot_thresh
                         and (not q_learning or ac.safety(o, a) > switch2robot_thresh2)):
-                        print("Switch to Robot")
+                        if env._render:
+                            print("Switch to Robot")
                         expert_mode = False 
                         num_switch_to_robot += 1
                         o2, _, d, _ = env.step(a_expert)
@@ -442,13 +445,15 @@ def thrifty(env, iters=5, actor_critic=core.Ensemble, ac_kwargs=dict(),
                 # hg-dagger switching for hg-dagger, or novelty switching for thriftydagger
                 elif (hg_dagger and (hg_dagger() or (algo_sup and sum((a - a_expert) ** 2)) >= hg_oracle_thresh)) \
                     or (not hg_dagger and ac.variance(o) > switch2human_thresh):
-                    print("Switch to Human (Novel)")
+                    if env._render:
+                        print("Switch to Human (Novel)")
                     num_switch_to_human += 1
                     expert_mode = True
                     continue
                 # second switch condition: if not novel, but also not safe
                 elif not hg_dagger and q_learning and ac.safety(o,a) < switch2human_thresh2:
-                    print("Switch to Human (Risk)")
+                    if env._render:
+                        print("Switch to Human (Risk)")
                     num_switch_to_human2 += 1
                     expert_mode = True
                     continue
@@ -529,7 +534,7 @@ def thrifty(env, iters=5, actor_critic=core.Ensemble, ac_kwargs=dict(),
                 'q_optimizer': q_optimizer
                 })
         # end of epoch logging
-        logger.save_state(dict())
+        logger.save_state(dict(), itr=t)
         print('Epoch', t)
         if t > 0 and test_intervention_eps == None:
             metrics['LossPi'].append(sum(loss_pi)/len(loss_pi))

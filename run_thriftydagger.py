@@ -86,6 +86,8 @@ if __name__ == '__main__':
     parser.add_argument('--gen_data_output', type=str, default='pick-place-data', help='Output location for recorded demonstrations; used in conjunction wtih --gen_data.')
     parser.add_argument('--test_intervention_eps', type=int, default=None)
     parser.add_argument('--hg_oracle_thresh', type=float, default=0.2)
+    parser.add_argument('--tau_sup', type=float, default=0.008)
+    parser.add_argument('--tau_auto', type=float, default=0.25)
     args = parser.parse_args()
     render = not args.no_render
 
@@ -141,7 +143,6 @@ if __name__ == '__main__':
             hard_reset=True,
             use_object_obs=True
         )
-    print(env._observables.keys())
     env = GymWrapper(env)
     env = VisualizationWrapper(env, indicator_configs=None)
     env = CustomWrapper(env, render=render)
@@ -190,7 +191,8 @@ if __name__ == '__main__':
         return a
     
     robosuite_cfg = {'MAX_EP_LEN': 200, 'INPUT_DEVICE': input_device}
-    os.makedirs(logger_kwargs['output_dir'])
+    os.makedirs(logger_kwargs['output_dir'], exist_ok=True)
+    args.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu').index
     if args.algo_sup:
         if args.environment == 'NutAssembly':
             expert_pol = HardcodedPolicy(env).act
@@ -209,11 +211,12 @@ if __name__ == '__main__':
             seed=args.seed, expert_policy=expert_pol, input_file=args.input_file, robosuite=True, 
             robosuite_cfg=robosuite_cfg, num_nets=1, hg_dagger=hg_dagger_wait, init_model=args.eval, 
             num_test_episodes=args.num_test_episodes, test_intervention_eps=args.test_intervention_eps, 
-            stochastic_expert=args.stochastic_expert, hg_oracle_thresh=args.hg_oracle_thresh)
+            stochastic_expert=args.stochastic_expert, hg_oracle_thresh=args.hg_oracle_thresh, algo_sup=args.algo_sup)
     elif args.lazydagger:
         lazy(env, iters=args.iters, logger_kwargs=logger_kwargs, device_idx=args.device, noise=0.,
          seed=args.seed, expert_policy=expert_pol, input_file=args.input_file, robosuite=True, 
-           robosuite_cfg=robosuite_cfg, init_model=args.eval, num_test_episodes=args.num_test_episodes, test_intervention_eps=args.test_intervention_eps, stochastic_expert=args.stochastic_expert)
+           robosuite_cfg=robosuite_cfg, init_model=args.eval, num_test_episodes=args.num_test_episodes, test_intervention_eps=args.test_intervention_eps, stochastic_expert=args.stochastic_expert, algo_sup=args.algo_sup,
+           tau_auto=args.tau_auto, tau_sup=args.tau_sup)
     else:
         thrifty(env, iters=args.iters, logger_kwargs=logger_kwargs, device_idx=args.device, target_rate=args.targetrate, 
          	seed=args.seed, expert_policy=expert_pol, input_file=args.input_file, robosuite=True, 

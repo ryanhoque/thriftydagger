@@ -1,0 +1,1975 @@
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.01_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.01_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.01",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.01_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f50e4c0bd90>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.01",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.01_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.01_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.01",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.01_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f5091b0be50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.01,
+    "tau_sup":	0.032,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.17
+5.038461538461538% of BC data points are not safe with threshold 0.032
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.1_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.1_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.1",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.1_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f7176267ac0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.1",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.1_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.1_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.1",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.1_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f7123165e50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.1,
+    "tau_sup":	0.032,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.09
+3.5% of BC data points are not safe with threshold 0.032
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.25_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.25_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.25",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.25_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f5feaed5d90>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.25",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.25_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.25_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.25",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.25_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f5f97dd4e50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.25,
+    "tau_sup":	0.032,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.05
+3.1923076923076925% of BC data points are not safe with threshold 0.032
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.5_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.5_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.5",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto0.5_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f7e8a3345e0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.5",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.5_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.5_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.5",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto0.5_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f7e3723b9a0>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.5,
+    "tau_sup":	0.032,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.36
+2.8461538461538463% of BC data points are not safe with threshold 0.032
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto1.0_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto1.0_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto1.0",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.032_tau_auto1.0_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7fe5ae24b9d0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto1.0",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto1.0_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto1.0_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto1.0",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.032_tau_auto1.0_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7fe55b149e50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	1.0,
+    "tau_sup":	0.032,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.28
+3.9615384615384617% of BC data points are not safe with threshold 0.032
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.01_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.01_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.01",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.01_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f6484d5e1c0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.01",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.01_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.01_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.01",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.01_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f6431c65850>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.01,
+    "tau_sup":	0.016,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.17
+15.76923076923077% of BC data points are not safe with threshold 0.016
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.1_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.1_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.1",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.1_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f64811ebf10>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.1",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.1_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.1_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.1",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.1_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f642e0eae50>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.1,
+    "tau_sup":	0.016,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.25
+17.0% of BC data points are not safe with threshold 0.016
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.25_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.25_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.25",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.25_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f321686c6d0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.25",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.25_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.25_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.25",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.25_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f31c37739a0>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.25,
+    "tau_sup":	0.016,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.11
+14.153846153846153% of BC data points are not safe with threshold 0.016
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.5_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.5_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.5",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto0.5_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7fdf911fe1c0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.5",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.5_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.5_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.5",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto0.5_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7fdf3e105850>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.5,
+    "tau_sup":	0.016,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.26
+16.576923076923077% of BC data points are not safe with threshold 0.016
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto1.0_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto1.0_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto1.0",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.016_tau_auto1.0_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f1b0a46fb20>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto1.0",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto1.0_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto1.0_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto1.0",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.016_tau_auto1.0_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f1ab7376850>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	1.0,
+    "tau_sup":	0.016,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.21
+14.0% of BC data points are not safe with threshold 0.016
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.01_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.01_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.01",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.01_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f155e42e610>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.01",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.01_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.01_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.01",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.01_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f150b335af0>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.01,
+    "tau_sup":	0.008,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.15
+25.923076923076923% of BC data points are not safe with threshold 0.008
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.1_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.1_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.1",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.1_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f90603d48b0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.1",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.1_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.1_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.1",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.1_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f900d2d1e80>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.1,
+    "tau_sup":	0.008,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.11
+33.07692307692308% of BC data points are not safe with threshold 0.008
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.25_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.25_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.25",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.25_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7ff21c837040>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.25",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.25_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.25_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.25",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.25_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7ff1c973e880>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.25,
+    "tau_sup":	0.008,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.22
+23.96153846153846% of BC data points are not safe with threshold 0.008
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.5_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.5_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.5",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto0.5_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f30efc34640>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.5",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.5_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.5_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.5",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto0.5_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f309cb30e80>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.5,
+    "tau_sup":	0.008,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.02
+27.307692307692307% of BC data points are not safe with threshold 0.008
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto1.0_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto1.0_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto1.0",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.008_tau_auto1.0_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f462a299790>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto1.0",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto1.0_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto1.0_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto1.0",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.008_tau_auto1.0_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f45d71a0880>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	1.0,
+    "tau_sup":	0.008,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.17
+30.846153846153847% of BC data points are not safe with threshold 0.008
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.01_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.01_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.01",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.01_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7fd6f91feaf0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.01",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.01_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.01_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.01",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.01_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7fd6a6105880>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.01,
+    "tau_sup":	0.004,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.71
+45.03846153846154% of BC data points are not safe with threshold 0.004
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.1_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.1_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.1",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.1_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f141cb63640>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.1",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.1_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.1_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.1",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.1_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f13c9a5fe80>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.1,
+    "tau_sup":	0.004,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.3
+38.26923076923077% of BC data points are not safe with threshold 0.004
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.25_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.25_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.25",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.25_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f7f79bd54f0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.25",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.25_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.25_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.25",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.25_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f7f26adc880>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.25,
+    "tau_sup":	0.004,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.31
+36.38461538461539% of BC data points are not safe with threshold 0.004
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.5_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.5_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.5",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto0.5_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7fc22b969970>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.5",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.5_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.5_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.5",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto0.5_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7fc1d8870880>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.5,
+    "tau_sup":	0.004,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.33
+30.384615384615383% of BC data points are not safe with threshold 0.004
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto1.0_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto1.0_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto1.0",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.004_tau_auto1.0_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f65f413f0a0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto1.0",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto1.0_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto1.0_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto1.0",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.004_tau_auto1.0_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f65a10dee80>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	1.0,
+    "tau_sup":	0.004,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.42
+52.19230769230769% of BC data points are not safe with threshold 0.004
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.01_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.01_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.01",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.01_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7fbe9b4b5640>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.01",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.01_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.01_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.01",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.01/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.01_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7fbe483b1e80>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.01,
+    "tau_sup":	0.002,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.16
+55.03846153846154% of BC data points are not safe with threshold 0.002
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.1_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.1_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.1",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.1_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f24c0d4f400>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.1",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.1_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.1_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.1",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.1/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.1_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f246dc56880>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.1,
+    "tau_sup":	0.002,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.6
+57.57692307692308% of BC data points are not safe with threshold 0.002
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.25_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.25_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.25",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.25_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f91da1614c0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.25",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.25_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.25_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.25",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.25/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.25_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f918705de80>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.25,
+    "tau_sup":	0.002,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.56
+51.57692307692308% of BC data points are not safe with threshold 0.002
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.5_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.5_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.5",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto0.5_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f359b71a670>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.5",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.5_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.5_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.5",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.5/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto0.5_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f35486bee80>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	0.5,
+    "tau_sup":	0.002,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.26
+47.03846153846154% of BC data points are not safe with threshold 0.002
+
+Keys      	Command
+q         	reset simulation
+spacebar  	toggle gripper (open/close)
+w-a-s-d   	move arm horizontally in x-y plane
+r-f       	move arm vertically
+z-x       	rotate arm about x-axis
+t-g       	rotate arm about y-axis
+c-v       	rotate arm about z-axis
+ESC       	quit
+
+Warning: Log dir /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto1.0_s4 already exists! Storing info there anyway.
+[32;1mLogging data to /iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto1.0_s4/progress.txt[0m
+[36;1mSaving config:
+[0m
+{
+    "ac_kwargs":	{},
+    "actor_critic":	"MLP",
+    "algo_sup":	true,
+    "batch_size":	100,
+    "bc_epochs":	5,
+    "device_idx":	null,
+    "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto1.0",
+    "grad_steps":	500,
+    "init_model":	"/iliad/u/madeline/thriftydagger/data/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0/nov27_lazydagger_pick_place_tau_sup0.002_tau_auto1.0_s4/pyt_save/model.pt",
+    "input_file":	"/iliad/u/madeline/thriftydagger/data/testpickplace/testpickplace_s4/pick-place-data.pkl",
+    "iters":	0,
+    "logger":	{
+        "<thrifty.utils.logx.EpochLogger object at 0x7f083b65f910>":	{
+            "epoch_dict":	{},
+            "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto1.0",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto1.0_s4",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto1.0_s4/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto1.0",
+        "output_dir":	"/iliad/u/madeline/thriftydagger/data/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto1.0/dec1_trial3_lazydagger_auto_only_eval_pick_place_tau_sup0.002_tau_auto1.0_s4"
+    },
+    "noise":	0.0,
+    "num_test_episodes":	100,
+    "obs_per_iter":	2000,
+    "pi_lr":	0.001,
+    "pi_safe_lr":	0.001,
+    "replay_size":	30000,
+    "robosuite":	true,
+    "robosuite_cfg":	{
+        "INPUT_DEVICE":	{
+            "<robosuite.devices.keyboard.Keyboard object at 0x7f07e8566880>":	{
+                "_enabled":	false,
+                "_pos_step":	0.05,
+                "_reset_state":	0,
+                "grasp":	false,
+                "last_drotation":	"[0. 0. 0.]",
+                "last_pos":	"[0. 0. 0.]",
+                "pos":	"[0. 0. 0.]",
+                "pos_sensitivity":	0.5,
+                "raw_drotation":	"[0. 0. 0.]",
+                "rot_sensitivity":	3.0,
+                "rotation":	"[[-1.  0.  0.]\n [ 0.  1.  0.]\n [ 0.  0. -1.]]"
+            }
+        },
+        "MAX_EP_LEN":	200
+    },
+    "seed":	4,
+    "stochastic_expert":	false,
+    "tau_auto":	1.0,
+    "tau_sup":	0.002,
+    "test_intervention_eps":	null
+}
+Test Success Rate: 0.46
+53.5% of BC data points are not safe with threshold 0.002
