@@ -88,6 +88,7 @@ if __name__ == '__main__':
     parser.add_argument('--hg_oracle_thresh', type=float, default=0.2)
     parser.add_argument('--tau_sup', type=float, default=0.008)
     parser.add_argument('--tau_auto', type=float, default=0.25)
+    parser.add_argument('--num_bc_episodes', type=int, default=30)
     args = parser.parse_args()
     render = not args.no_render
 
@@ -193,6 +194,7 @@ if __name__ == '__main__':
     robosuite_cfg = {'MAX_EP_LEN': 200, 'INPUT_DEVICE': input_device}
     os.makedirs(logger_kwargs['output_dir'], exist_ok=True)
     args.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu').index
+    robosuite = True
     if args.algo_sup:
         if args.environment == 'NutAssembly':
             expert_pol = HardcodedPolicy(env).act
@@ -201,25 +203,28 @@ if __name__ == '__main__':
                 expert_pol = HardcodedStochasticPickPlacePolicy(env)
             else:
                 expert_pol = HardcodedPickPlacePolicy(env).act
+        # elif args.environment == 'Reach2D':
+        #     expert_pol = HardcodedReach2DPolicy(env, style=args.expert_sim_style).act
+        #     robosuite = False
     if args.gen_data:
-    	NUM_BC_EPISODES = 30
-    	out_file = os.path.join(logger_kwargs['output_dir'], f'{args.gen_data_output}-{NUM_BC_EPISODES}.pkl')
-    	generate_offline_data(env, expert_policy=expert_pol, num_episodes=NUM_BC_EPISODES, seed=args.seed,
-            output_file=out_file, robosuite=True, robosuite_cfg=robosuite_cfg, stochastic_expert=args.stochastic_expert)
+    	num_bc_episodes = args.num_bc_episodes
+    	out_file = os.path.join(logger_kwargs['output_dir'], f'{args.gen_data_output}-{num_bc_episodes}.pkl')
+    	generate_offline_data(env, expert_policy=expert_pol, num_episodes=num_bc_episodes, seed=args.seed,
+            output_file=out_file, robosuite=robosuite, robosuite_cfg=robosuite_cfg, stochastic_expert=args.stochastic_expert)
     if args.hgdagger:
         thrifty(env, iters=args.iters, logger_kwargs=logger_kwargs, device_idx=args.device, target_rate=args.targetrate, 
-            seed=args.seed, expert_policy=expert_pol, input_file=args.input_file, robosuite=True, 
+            seed=args.seed, expert_policy=expert_pol, input_file=args.input_file, robosuite=robosuite, 
             robosuite_cfg=robosuite_cfg, num_nets=1, hg_dagger=hg_dagger_wait, init_model=args.eval, 
             num_test_episodes=args.num_test_episodes, test_intervention_eps=args.test_intervention_eps, 
             stochastic_expert=args.stochastic_expert, hg_oracle_thresh=args.hg_oracle_thresh, algo_sup=args.algo_sup)
     elif args.lazydagger:
         lazy(env, iters=args.iters, logger_kwargs=logger_kwargs, device_idx=args.device, noise=0.,
-         seed=args.seed, expert_policy=expert_pol, input_file=args.input_file, robosuite=True, 
+         seed=args.seed, expert_policy=expert_pol, input_file=args.input_file, robosuite=robosuite, 
            robosuite_cfg=robosuite_cfg, init_model=args.eval, num_test_episodes=args.num_test_episodes, test_intervention_eps=args.test_intervention_eps, stochastic_expert=args.stochastic_expert, algo_sup=args.algo_sup,
            tau_auto=args.tau_auto, tau_sup=args.tau_sup)
     else:
         thrifty(env, iters=args.iters, logger_kwargs=logger_kwargs, device_idx=args.device, target_rate=args.targetrate, 
-         	seed=args.seed, expert_policy=expert_pol, input_file=args.input_file, robosuite=True, 
+         	seed=args.seed, expert_policy=expert_pol, input_file=args.input_file, robosuite=robosuite, 
             robosuite_cfg=robosuite_cfg, q_learning=True, init_model=args.eval, bc_only=args.bc_only, 
             num_test_episodes=args.num_test_episodes, test_intervention_eps=args.test_intervention_eps, 
             stochastic_expert=args.stochastic_expert, algo_sup=args.algo_sup)
