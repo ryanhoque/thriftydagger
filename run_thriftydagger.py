@@ -4,11 +4,13 @@ from thrifty.algos.lazydagger import lazy
 from thrifty.utils.run_utils import setup_logger_kwargs
 import gym, torch
 import os
+import pickle
 import robosuite as suite
 from robosuite import load_controller_config
 from robosuite.utils.input_utils import input2action
 from thrifty.utils.hardcoded_nut_assembly import HardcodedPolicy
 from thrifty.utils.hardcoded_pick_place import HardcodedPickPlacePolicy, HardcodedStochasticPickPlacePolicy
+from thrifty.utils.hardcoded_reach_2d import HardcodedReach2DPolicy, sample_reach
 from robosuite.wrappers import VisualizationWrapper
 from robosuite.wrappers import GymWrapper
 from robosuite.devices import Keyboard
@@ -89,6 +91,7 @@ if __name__ == '__main__':
     parser.add_argument('--tau_sup', type=float, default=0.008)
     parser.add_argument('--tau_auto', type=float, default=0.25)
     parser.add_argument('--num_bc_episodes', type=int, default=30)
+    parser.add_argument('--expert_sim_style', type=int, default=0)
     args = parser.parse_args()
     render = not args.no_render
 
@@ -203,14 +206,18 @@ if __name__ == '__main__':
                 expert_pol = HardcodedStochasticPickPlacePolicy(env)
             else:
                 expert_pol = HardcodedPickPlacePolicy(env).act
-        # elif args.environment == 'Reach2D':
-        #     expert_pol = HardcodedReach2DPolicy(env, style=args.expert_sim_style).act
-        #     robosuite = False
+        elif args.environment == 'Reach2D':
+            expert_pol = HardcodedReach2DPolicy(env, style=args.expert_sim_style).act
+            robosuite = False
     if args.gen_data:
     	num_bc_episodes = args.num_bc_episodes
     	out_file = os.path.join(logger_kwargs['output_dir'], f'{args.gen_data_output}-{num_bc_episodes}.pkl')
-    	generate_offline_data(env, expert_policy=expert_pol, num_episodes=num_bc_episodes, seed=args.seed,
-            output_file=out_file, robosuite=robosuite, robosuite_cfg=robosuite_cfg, stochastic_expert=args.stochastic_expert)
+        if args.environment == 'Reach2D':
+            demos = sample_reach(num_bc_episodes)
+            pickle.dump(demos, open(out_file, "wb"))
+        else:
+            generate_offline_data(env, expert_policy=expert_pol, num_episodes=num_bc_episodes, seed=args.seed,
+                output_file=out_file, robosuite=robosuite, robosuite_cfg=robosuite_cfg, stochastic_expert=args.stochastic_expert)
     if args.hgdagger:
         thrifty(env, iters=args.iters, logger_kwargs=logger_kwargs, device_idx=args.device, target_rate=args.targetrate, 
             seed=args.seed, expert_policy=expert_pol, input_file=args.input_file, robosuite=robosuite, 
