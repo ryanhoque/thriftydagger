@@ -1,3 +1,4 @@
+## Setup
 0. Create a conda environment from `thriftydagger.yaml`.
 ## Reach2D experiments with BC
 1. Generate data: ```./scripts/generate_reach2d_data/{desired experiment name here, see folder for options} ```
