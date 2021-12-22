@@ -1,23 +1,22 @@
 import numpy as np
 import pickle
+import torch
 
 def load_data_from_file(file_path, shuffle=True):
     with open(file_path, 'rb') as f:
         data = pickle.load(f)
         
-    # TODO: fix data saving/loading so they're all the same format
     obs = []
     act = []
-    # for demo in data:
-    #     for (s, a, g) in demo:
-    #         obs.append(np.concatenate([s, g]))
-    #         act.append(a)
-    # data = {'obs': np.array(obs), 'act': np.array(act)}
-    idxs = np.arange(len(data['obs']))
+    for demo in data:
+        obs.extend(demo['obs'])
+        act.extend(demo['act'])
+    data = {'obs': torch.stack(obs), 'act': torch.stack(act)}
 
     if shuffle:
-        np.random.shuffle(idxs)
-
+        idxs = torch.randperm(len(data['obs']))
+    else:
+        idxs = torch.arange(len(data['obs']))
     data['obs'] = data['obs'][idxs]
     data['act'] = data['act'][idxs]
 

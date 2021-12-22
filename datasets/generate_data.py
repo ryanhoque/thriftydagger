@@ -10,6 +10,36 @@ ACTION_MAGNITUDE = 0.1
 MAX_TRAJ_LENGTH = 100
 SUCCESS_THRESH = 0.1
 
+def parse_args():
+    parser = argparse.ArgumentParser()
+    
+    # Sampling parameters
+    parser.add_argument('--env', type=str, default='Reach2D', help='Name of environment for data sampling.')
+    parser.add_argument('--robosuite', action='store_true', help='Whether or not the environment is a Robosuite environment')
+    parser.add_argument('--N_trajectories', type=int, default=1000, help='Number of trajectories (demonstrations) to sample.')
+    parser.add_argument('--add_noise', action='store_true', help='If true, noise is added to sampled states.')
+    parser.add_argument('--noise_mean', type=float, default=1.0, help='Mean to use for Gaussian noise.')
+    parser.add_argument('--noise_std', type=float, default=0.01, help='Std to use for Gaussian noise.')
+    parser.add_argument('--seed', type=int, default=0, help='Random seed for reproducibility.')
+    
+    # Saving
+    parser.add_argument('--save_dir', default='./data', type=str, help='Directory to save the data in.')
+    parser.add_argument('--save_fname', type=str, help='File name for the saved data.')
+    parser.add_argument('--overwrite', action='store_true', help='If true and the save file exists already, it will be overwritten with newly-generated data.')
+    
+    # Arguments specific to the Reach2D environment
+    parser.add_argument('--sample_mode', type=str, default='oracle', help='How to sample states/actions. Must be one of [\'oracle\', \'pi_r\',\'oracle_pi_r_mix\'].')
+    parser.add_argument('--model_path', type=str, default=None, help='Model path to use as pi_r when args.sample_mode samples from pi_r.')
+    parser.add_argument('--arch', type=str, default='LinearModel', help='Model architecture to use.')
+    parser.add_argument('--num_models', type=int, default=1, help='Number of models in the ensemble; if 1, a non-ensemble model is used')
+    parser.add_argument('--perc_oracle', type=float, default=0.8,
+                        help='For use with args.sample_mode == \'oracle_pi_r_mix\' only. \
+                            Percentage of oracle trajectories to use (vs. policy-sampled trajectories).')
+
+    args = parser.parse_args()
+    return args
+
+
 def sample_reach(N_trajectories, range_x=3.0, range_y=3.0):
     demos = []
 
@@ -83,12 +113,12 @@ def sample_pi_r(N_trajectories, model, range_x=3.0, range_y=3.0, add_noise=False
         
         while not done and traj_len < MAX_TRAJ_LENGTH:
             o = torch.cat([curr_state, goal_ee_state])
-            obs.append(o.clone())
+            obs.append(o.clone().detach())
             
             # Record oracle action given observation o
             a_target = goal_ee_state - curr_state
             a_target = ACTION_MAGNITUDE * a_target / torch.norm(a_target)
-            act.append(a_target)
+            act.append(a_target.detach())
             
             # Take policy's action given observation o
             a = model(o)
@@ -111,34 +141,6 @@ def sample_pi_r(N_trajectories, model, range_x=3.0, range_y=3.0, add_noise=False
         
     return demos
 
-def parse_args():
-    parser = argparse.ArgumentParser()
-    
-    # Sampling parameters
-    parser.add_argument('--env', type=str, default='Reach2D', help='Name of environment for data sampling.')
-    parser.add_argument('--robosuite', action='store_true', help='Whether or not the environment is a Robosuite environment')
-    parser.add_argument('--N_trajectories', type=int, default=1000, help='Number of trajectories (demonstrations) to sample.')
-    parser.add_argument('--add_noise', action='store_true', help='If true, noise is added to sampled states.')
-    parser.add_argument('--noise_mean', type=float, default=1.0, help='Mean to use for Gaussian noise.')
-    parser.add_argument('--noise_std', type=float, default=0.01, help='Std to use for Gaussian noise.')
-    parser.add_argument('--seed', type=int, default=0, help='Random seed for reproducibility.')
-    
-    # Saving
-    parser.add_argument('--save_dir', default='./data', type=str, help='Directory to save the data in.')
-    parser.add_argument('--save_fname', type=str, help='File name for the saved data.')
-    parser.add_argument('--overwrite', action='store_true', help='If true and the save file exists already, it will be overwritten with newly-generated data.')
-    
-    # Arguments specific to the Reach2D environment
-    parser.add_argument('--sample_mode', type=str, default='oracle', help='How to sample states/actions. Must be one of [\'oracle\', \'pi_r\',\'oracle_pi_r_mix\'].')
-    parser.add_argument('--model_path', type=str, default=None, help='Model path to use as pi_r when args.sample_mode samples from pi_r.')
-    parser.add_argument('--arch', type=str, default='LinearModel', help='Model architecture to use.')
-    parser.add_argument('--num_models', type=int, default=1, help='Number of models in the ensemble; if 1, a non-ensemble model is used')
-    parser.add_argument('--perc_oracle', type=float, default=0.8,
-                        help='For use with args.sample_mode == \'oracle_pi_r_mix\' only. \
-                            Percentage of oracle trajectories to use (vs. policy-sampled trajectories).')
-
-    args = parser.parse_args()
-    return args
 
 def main(args):
     torch.manual_seed(args.seed)
