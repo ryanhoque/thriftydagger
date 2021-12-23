@@ -1,18 +1,19 @@
+from algos import BC, HGDagger
+from datasets.buffer import get_dataset
+from datetime import datetime
+from environments import CustomWrapper, Reach2D
+from environments.reach2d import ACT_MAGNITUDE
+from models import Ensemble, LinearModel, MLP
+from robosuite import load_controller_config
+from robosuite.devices import Keyboard
+from robosuite.wrappers import GymWrapper, VisualizationWrapper
+
 import argparse
 import numpy as np
 import os
 import random
 import robosuite as suite
 import torch
-
-from algos import BC, HGDagger
-from datasets.buffer import get_dataset
-from datetime import datetime
-from environments import CustomWrapper
-from models import Ensemble, LinearModel, MLP
-from robosuite import load_controller_config
-from robosuite.devices import Keyboard
-from robosuite.wrappers import GymWrapper, VisualizationWrapper
 
 MAX_TRAJ_LENGTH = 175
 ENVS = ['NutAssembly', 'Reach2D', 'PickPlace']
@@ -31,6 +32,11 @@ def parse_args():
     parser.add_argument('--data_path', type=str, default='./data/dec14_gen_oracle_reach2d_data_1k/dec14_gen_oracle_reach2d_data_1k_s4/pick-place-data-1000.pkl')
     parser.add_argument('--batch_size', type=int, default=32, help='Batch size')
 
+    # Autonomous evaluation only
+    parser.add_argument('--eval_only', action='store_true', help='If true, rolls out the autonomous policy of the provided trained model')
+    parser.add_argument('--model_path', type=str, default=None, help='Path to saved model checkpoint for evaulation purposes.')
+    parser.add_argument('--N_eval_trajectories', type=int, default=100, help='Number of trajectories to roll out for autonomous-only evaluation.')
+    
     # Environment details + rendering
     parser.add_argument('--environment', type=str, default='Reach2D', help='Environment name')
     parser.add_argument('--robosuite', action='store_true', help='Whether or not the environment is a Robosuite environment')
@@ -149,7 +155,7 @@ def main(args):
         act_limit = env.action_space.high[0] 
     else:
         # TODO: have config files for non-robosuite environments
-        env = None
+        env = Reach2D()
         robosuite_cfg = None
         obs_dim = 4
         act_dim = 2
@@ -157,10 +163,13 @@ def main(args):
         
         
     if args.arch == 'LinearModel':
+        model_args = [obs_dim, act_dim]
+        if args.environment == 'Reach2D':
+            model_args += [ACT_MAGNITUDE, True]
+        
         if args.num_models == 1:
-            model = LinearModel(obs_dim, act_dim)
+            model = LinearModel(*model_args)
         elif args.num_models > 1:
-            model_args = [obs_dim, act_dim]
             model = Ensemble(model_args, device, args.num_models, LinearModel)
         else:
             raise ValueError(f'Got {args.num_models} for args.num_models, but value must be an integer >= 1!')
@@ -174,7 +183,11 @@ def main(args):
             raise ValueError(f'Got {args.num_models} for args.num_models, but value must be an integer >= 1!')
     else:
         raise NotImplementedError(f'The architecture {args.arch} has not been implemented yet!')
-    
+
+    if args.eval_only:
+        model.eval()
+        ckpt = torch.load(args.model_path)
+        model.load_state_dict(ckpt['model'])
     
     if args.method == 'HGDagger':
         algorithm = HGDagger(model, device=device, is_ensemble=(args.num_models > 1), 
@@ -183,9 +196,13 @@ def main(args):
         algorithm = BC(model, device=device, save_dir=save_dir, max_traj_length=MAX_TRAJ_LENGTH)
     else:
         raise NotImplementedError(f'Method {args.method} has not been implemented yet!')
-        
-    train, val = get_dataset(args.data_path)
-    algorithm.run(train, val, args, env=env, robosuite_cfg=robosuite_cfg)
+    
+    
+    if args.eval_only:
+        algorithm.eval_auto(args, env=env, robosuite_cfg=robosuite_cfg)
+    else:
+        train, val = get_dataset(args.data_path)
+        algorithm.run(train, val, args, env=env, robosuite_cfg=robosuite_cfg)
     
 if __name__ == '__main__':
     args = parse_args()

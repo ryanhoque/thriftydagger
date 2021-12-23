@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import pickle
 import time
 import torch
 
@@ -17,32 +18,36 @@ class BaseAlgorithm:
         self.optimizer = optimizer(self.model.parameters(), lr=lr) if optimizer is not None else None
         self.save_dir = save_dir
     
-    def _rollout(self, env, robosuite_cfg, trajectories_per_rollout):
+    def _rollout(self, env, robosuite_cfg, trajectories_per_rollout, auto_only=False):
         data = []
         for j in range(trajectories_per_rollout):
             curr_obs, expert_mode, traj_length = env.reset(), False, 0
             success = False
+            obs, act = [], []
             while traj_length <= self.max_traj_length and not success:
-                if expert_mode:
+                obs.append(curr_obs)
+                if (expert_mode and not auto_only):
                     # Expert mode (either human or oracle algorithm)
-                    act = self._expert_pol(curr_obs, env, robosuite_cfg)
+                    a = self._expert_pol(curr_obs, env, robosuite_cfg)
                     # act = np.clip(act, -act_limit, act_limit) TODO: clip actions?
-                    data.append((curr_obs, act))
-                    if self._switch_mode(act=act) == True:
+                    if self._switch_mode(act=a) == True:
                         print('Switch to Robot')
                         expert_mode = False
-                    next_obs, _, _, _ = env.step(act)
+                    next_obs, _, _, _ = env.step(a)
                 else:
-                    if self._switch_mode(act=None, robosuite_cfg=robosuite_cfg, env=env) == True:
+                    switch_mode = (not auto_only) and self._switch_mode(act=None, robosuite_cfg=robosuite_cfg, env=env)
+                    if switch_mode:
                         print('Switch to Expert Mode')
                         expert_mode = True
                         continue
-                    act = self.model(curr_obs)
-                    next_obs, _, _, _ = env.step(act)
+                    a = self.model(curr_obs)
+                    next_obs, _, _, _ = env.step(a)
+                act.append(a)
                 traj_length += 1
-                # TODO: record + save success rate
                 success = env._check_success()
                 curr_obs = next_obs
+            demo = {'obs': obs, 'act': act, 'success': success}
+            data.append(demo)
             env.close()
 
         return data
@@ -136,3 +141,12 @@ class BaseAlgorithm:
     
     def run(self, train_loader, val_loader, args, env=None, robosuite_cfg=None) -> None:
         raise NotImplementedError
+    
+    def eval_auto(self, args, env=None, robosuite_cfg=None):
+        data = self._rollout(env, robosuite_cfg, args.N_eval_trajectories, auto_only=True)
+        successes = [demo['success'] for demo in data]
+        save_file = os.path.join(self.save_dir, 'eval_auto_data.pkl')
+        with open(save_file, 'wb') as f:
+            pickle.dump(data, f)
+        print(f'Success rate: {sum(successes)/len(successes)}')
+        print(f'Eval data saved to {save_file}.')

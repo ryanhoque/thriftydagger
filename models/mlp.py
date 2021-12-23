@@ -9,7 +9,7 @@ class MLP(nn.Module):
             nn.Linear(hidden_size, hidden_size),
             nn.ReLU(),
             nn.Linear(hidden_size, act_dim),
-            nn.Tanh()
+            nn.ReLU()
         )
 
     def forward(self, obs):
