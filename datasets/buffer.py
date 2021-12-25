@@ -1,6 +1,5 @@
-from datasets.util import load_data_from_file
 from typing import Tuple
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset
 
 import numpy as np
 import torch
@@ -13,7 +12,6 @@ class BufferDataset(Dataset):
         self.ptr = 0
         self.obs, self.act = self.split_data(
             data, split, train_perc, shuffle=shuffle)
-        self.curr_size = len(self.obs)
 
     def split_data(self, data, split, train_perc, shuffle) -> Tuple[torch.Tensor, torch.Tensor]:
         obs = data['obs']
@@ -34,6 +32,10 @@ class BufferDataset(Dataset):
             np.random.shuffle(idxs)
             obs = obs[idxs]
             act = act[idxs]
+        
+        self.curr_size = len(obs)
+        obs = torch.cat([obs, torch.zeros(self.max_size - len(obs), obs.shape[1])])
+        act = torch.cat([act, torch.zeros(self.max_size - len(act), act.shape[1])])
         return obs, act
 
     def update_buffer(self, obs, act) -> None:
@@ -48,12 +50,3 @@ class BufferDataset(Dataset):
     def __getitem__(self, idx: int) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         # Returns (state (i.e., observation), action) tuple
         return (self.obs[idx], self.act[idx])
-
-
-
-def get_dataset(data_path):
-    data = load_data_from_file(data_path)
-    train = BufferDataset(data, split='train')
-    val = BufferDataset(data, split='val')
-    
-    return train, val

@@ -1,22 +1,40 @@
 import os
 import pandas as pd
 import pickle
-import time
 import torch
 
 from collections import defaultdict
+from models import Ensemble
 from robosuite.utils.input_utils import input2action
 from tqdm import tqdm
 
 class BaseAlgorithm:
-    def __init__(self, model, save_dir, max_traj_length, device, 
+    def __init__(self, model, model_kwargs, save_dir, max_traj_len, device, 
                  lr=1e-3, optimizer=torch.optim.Adam) -> None:
         self.device = device
-        self.max_traj_length = max_traj_length
-        self.metrics = defaultdict(list)
+        self.lr = lr
+        self.max_traj_len = max_traj_len
         self.model = model
-        self.optimizer = optimizer(self.model.parameters(), lr=lr) if optimizer is not None else None
+        self.model_kwargs = model_kwargs
         self.save_dir = save_dir
+    
+        self.metrics = defaultdict(list)
+        self.model_type = type(model)
+        self.optimizer_type = optimizer
+        self.is_ensemble = self.model_type == Ensemble
+        
+        self._setup_optimizer()
+        
+    
+    def _setup_optimizer(self):
+        if self.is_ensemble:
+            self.optimizers = [self.optimizer_type(self.model.models[i].parameters(), lr=self.lr) for i in range(len(self.model.models))]
+        else:
+            self.optimizer = self.optimizer_type(self.model.parameters(), lr=self.lr)
+    
+    def _reset_model(self):
+        self.model = self.model_type(**self.model_kwargs)
+    
     
     def _rollout(self, env, robosuite_cfg, trajectories_per_rollout, auto_only=False):
         data = []
@@ -24,7 +42,7 @@ class BaseAlgorithm:
             curr_obs, expert_mode, traj_length = env.reset(), False, 0
             success = False
             obs, act = [], []
-            while traj_length <= self.max_traj_length and not success:
+            while traj_length <= self.max_traj_len and not success:
                 obs.append(curr_obs)
                 if (expert_mode and not auto_only):
                     # Expert mode (either human or oracle algorithm)
@@ -57,38 +75,49 @@ class BaseAlgorithm:
         Default expert policy: grant control to user
         TODO: should have a default, non-Robosuite policy too?
         '''
-        a = torch.zeros(7)
-        if env.gripper_closed:
-            a[-1] = 1.
-            robosuite_cfg['input_device'].grasp = True
-        else:
-            a[-1] = -1.
-            robosuite_cfg['input_device'].grasp = False
-        a_ref = a.clone()
-        # pause simulation if there is no user input (instead of recording a no-op)
-        # TODO: make everything torch tensors
-        import numpy as np
-        while np.array_equal(a, a_ref):
-            a, _ = input2action(
-                device=robosuite_cfg['input_device'],
-                robot=robosuite_cfg['active_robot'],
-                active_arm=robosuite_cfg['arm'],
-                env_configuration=robosuite_cfg['env_config'])
-            env.render()
-            time.sleep(0.001)
+        return 0.1 * (obs[2:] - obs[:2]) / torch.norm((obs[2:] - obs[:2]))
+        # a = torch.zeros(7)
+        # if env.gripper_closed:
+        #     a[-1] = 1.
+        #     robosuite_cfg['input_device'].grasp = True
+        # else:
+        #     a[-1] = -1.
+        #     robosuite_cfg['input_device'].grasp = False
+        # a_ref = a.clone()
+        # # pause simulation if there is no user input (instead of recording a no-op)
+        # # TODO: make everything torch tensors
+        # import numpy as np
+        # while np.array_equal(a, a_ref):
+        #     a, _ = input2action(
+        #         device=robosuite_cfg['input_device'],
+        #         robot=robosuite_cfg['active_robot'],
+        #         active_arm=robosuite_cfg['arm'],
+        #         env_configuration=robosuite_cfg['env_config'])
+        #     env.render()
+        #     time.sleep(0.001)
         return a
     
     
     def _save_checkpoint(self, epoch, best=False):
+        if self.is_ensemble:
+            # Save state dict for each model/optimizer
+            ckpt_dict = {
+                'models': [model.state_dict() for model in self.model.models],
+                'optimizers': [optimizer.state_dict() for optimizer in self.model.optimizers],
+                'epoch': epoch
+            }
+        else:
+            ckpt_dict = {
+                'model': self.model.state_dict(),
+                'optimizer': self.optimizer.state_dict(),
+                'epoch': epoch
+            }
+            
         if best:
-            ckpt_name = f'model_best_{epoch}.pt'
+                ckpt_name = f'model_best_{epoch}.pt'
         else:
             ckpt_name = f'model_{epoch}.pt'
-        ckpt_dict = {
-            'model': self.model.state_dict(),
-            'optimizer': self.optimizer.state_dict(),
-            'epoch': epoch
-        }
+            
         save_path = os.path.join(self.save_dir, ckpt_name)
         torch.save(ckpt_dict, save_path)
     
@@ -109,7 +138,6 @@ class BaseAlgorithm:
             epoch_losses = []
             for (obs, act) in prog_bar:
                 optimizer.zero_grad()
-                obs = torch.as_tensor(obs, dtype=torch.float32, device=self.device)
                 pred_act = model(obs)
                 loss = torch.mean(torch.sum((act - pred_act)**2, dim=1))
                 loss.backward()
@@ -133,7 +161,6 @@ class BaseAlgorithm:
         model.eval()
         val_losses = []
         for (obs, act) in val_loader:
-            obs = torch.as_tensor(obs, dtype=torch.float32, device=self.device)
             pred_act = model(obs)
             loss = torch.mean(torch.sum((act - pred_act)**2, dim=1))
             val_losses.append(loss.item())

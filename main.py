@@ -1,12 +1,12 @@
-from algos import BC, HGDagger
-from datasets.buffer import get_dataset
+from algos import BC, Dagger, HGDagger
+from datasets.util import get_dataset
 from datetime import datetime
 from environments import CustomWrapper, Reach2D
-from environments.reach2d import ACT_MAGNITUDE
-from models import Ensemble, LinearModel, MLP
+from models import Ensemble
 from robosuite import load_controller_config
 from robosuite.devices import Keyboard
 from robosuite.wrappers import GymWrapper, VisualizationWrapper
+from util import get_model_type_and_kwargs, MAX_PICKPLACE_TRAJ_LEN, MAX_REACH2D_TRAJ_LEN
 
 import argparse
 import numpy as np
@@ -15,7 +15,6 @@ import random
 import robosuite as suite
 import torch
 
-MAX_TRAJ_LENGTH = 175
 ENVS = ['NutAssembly', 'Reach2D', 'PickPlace']
 ARCHS = ['LinearModel', 'MLP']
 
@@ -30,6 +29,7 @@ def parse_args():
     
     # Data generation / loading
     parser.add_argument('--data_path', type=str, default='./data/dec14_gen_oracle_reach2d_data_1k/dec14_gen_oracle_reach2d_data_1k_s4/pick-place-data-1000.pkl')
+    parser.add_argument('--N', type=int, default=1000, help='Size of dataset.')
     parser.add_argument('--batch_size', type=int, default=32, help='Batch size')
 
     # Autonomous evaluation only
@@ -48,6 +48,9 @@ def parse_args():
     parser.add_argument('--hidden_size', type=int, default=256, help='Hidden size of MLP if args.arch == \'MLP\'')
     parser.add_argument('--num_models', type=int, default=1, help='Number of models in the ensemble; if 1, a non-ensemble model is used')
     
+    # Dagger-specific parameter beta
+    parser.add_argument('--dagger_beta', type=float, default=0.9, help='DAgger parameter; policy will be (beta * expert_action) + (1-beta) * learned_policy_action')
+    
     # Training parameters
     parser.add_argument('--epochs', type=int, default=5, help='Number of iterations to run overall method for')
     parser.add_argument('--policy_train_epochs', type=int, default=5, help='Number of epochs to run when training the policy (for interactive methods only).')
@@ -58,7 +61,7 @@ def parse_args():
 
     return parser.parse_args()
 
-def setup_robosuite(args):
+def setup_robosuite(args, max_traj_len):
     render = not args.no_render
     controller_config = load_controller_config(default_controller='OSC_POSE')
     config = {
@@ -126,7 +129,7 @@ def setup_robosuite(args):
     config_ = 'single-arm-opposed'
     active_robot = env.robots[arm_ == 'left']
     robosuite_cfg = {
-        'max_ep_length': MAX_TRAJ_LENGTH, 
+        'max_ep_length': max_traj_len, 
         'input_device': input_device,
         'arm': arm_,
         'env_config': config_,
@@ -141,6 +144,7 @@ def main(args):
     np.random.seed(args.seed)
     random.seed(args.seed)
     
+    # Set up output directories
     if args.exp_name is None:
         args.exp_name = datetime.now().strftime('%m-%d-%Y-%H:%M:%S')
     save_dir = os.path.join(args.out_dir, args.exp_name)
@@ -148,8 +152,17 @@ def main(args):
         raise FileExistsError(f'The directory {save_dir} already exists. If you want to overwrite it, rerun with the argument --overwrite.')
     os.makedirs(save_dir, exist_ok=True)
         
+    
+    # Set up environment
+    if args.environment == 'Reach2D': 
+        max_traj_len = MAX_REACH2D_TRAJ_LEN
+    elif args.environment == 'PickPlace':
+        max_traj_len = MAX_PICKPLACE_TRAJ_LEN
+    else:
+        raise NotImplementedError(f'Max trajectory length not yet defined for the environment {args.environment}!')
+        
     if args.robosuite:
-        env, robosuite_cfg = setup_robosuite(args)
+        env, robosuite_cfg = setup_robosuite(args, max_traj_len)
         obs_dim = env.observation_space.shape[0]
         act_dim = env.action_space.shape[0] 
         act_limit = env.action_space.high[0] 
@@ -161,47 +174,43 @@ def main(args):
         act_dim = 2
         act_limit = float('inf')
         
-        
-    if args.arch == 'LinearModel':
-        model_args = [obs_dim, act_dim]
-        if args.environment == 'Reach2D':
-            model_args += [ACT_MAGNITUDE, True]
-        
-        if args.num_models == 1:
-            model = LinearModel(*model_args)
-        elif args.num_models > 1:
-            model = Ensemble(model_args, device, args.num_models, LinearModel)
-        else:
-            raise ValueError(f'Got {args.num_models} for args.num_models, but value must be an integer >= 1!')
-    elif args.arch == 'MLP':
-        if args.num_models == 1:
-            model = MLP(obs_dim, act_dim, args.hidden_size)
-        elif args.num_models > 1:
-            model_args = [obs_dim, act_dim, args.hidden_size]
-            model = Ensemble(model_args, device, args.num_models, MLP)
-        else:
-            raise ValueError(f'Got {args.num_models} for args.num_models, but value must be an integer >= 1!')
+    
+    # Initialize model
+    model_type, model_kwargs = get_model_type_and_kwargs(args, obs_dim, act_dim)
+    
+    if args.num_models > 1:
+        model_kwargs = dict(model_kwargs=model_kwargs, device=device, 
+                            num_models=args.num_models, model_type=model_type)
+        model = Ensemble(**model_kwargs)
+    elif args.num_models == 1:
+        model = model_type(**model_kwargs)
     else:
-        raise NotImplementedError(f'The architecture {args.arch} has not been implemented yet!')
-
+        raise ValueError(f'Got {args.num_models} for args.num_models, but value must be an integer >= 1!')
+        
+    # Load model if in eval_only mode
     if args.eval_only:
         model.eval()
         ckpt = torch.load(args.model_path)
         model.load_state_dict(ckpt['model'])
-    
-    if args.method == 'HGDagger':
-        algorithm = HGDagger(model, device=device, is_ensemble=(args.num_models > 1), 
-                             save_dir=save_dir, max_traj_length=MAX_TRAJ_LENGTH)
+        
+    # Set up method
+    if args.method == 'Dagger':
+        algorithm = Dagger(model, model_kwargs, device=device, save_dir=save_dir, 
+                           max_traj_len=max_traj_len, beta=args.dagger_beta)
+    elif args.method == 'HGDagger':
+        algorithm = HGDagger(model, model_kwargs, device=device, save_dir=save_dir, 
+                             max_traj_len=max_traj_len)
     elif args.method == 'BC':
-        algorithm = BC(model, device=device, save_dir=save_dir, max_traj_length=MAX_TRAJ_LENGTH)
+        algorithm = BC(model, model_kwargs, device=device, save_dir=save_dir, 
+                       max_traj_len=max_traj_len)
     else:
         raise NotImplementedError(f'Method {args.method} has not been implemented yet!')
     
-    
+    # Run algorithm    
     if args.eval_only:
         algorithm.eval_auto(args, env=env, robosuite_cfg=robosuite_cfg)
     else:
-        train, val = get_dataset(args.data_path)
+        train, val = get_dataset(args.data_path, args.N)
         algorithm.run(train, val, args, env=env, robosuite_cfg=robosuite_cfg)
     
 if __name__ == '__main__':

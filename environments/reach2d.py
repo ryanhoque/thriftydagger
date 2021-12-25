@@ -1,8 +1,7 @@
+from util import REACH2D_SUCCESS_THRESH
+
 import random
 import torch
-
-SUCCESS_THRESH = 0.1
-ACT_MAGNITUDE = 0.1
 
 class Reach2D:
 
@@ -11,8 +10,6 @@ class Reach2D:
         self.range_y = range_y
         self.curr_state = torch.zeros(2)
         self.goal_state = torch.tensor([random.uniform(0, self.range_x), random.uniform(0, self.range_y)])
-        # self.observation_space = 0
-        # self.action_space = env.action_space
 
     def close(self):
         '''
@@ -31,6 +28,6 @@ class Reach2D:
         return curr_obs, None, None, None
 
     def _check_success(self):
-        return (torch.norm(self.curr_state - self.goal_state) <= SUCCESS_THRESH).item()
+        return (torch.norm(self.curr_state - self.goal_state) <= REACH2D_SUCCESS_THRESH).item()
     
     

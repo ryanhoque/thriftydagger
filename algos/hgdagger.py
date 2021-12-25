@@ -8,10 +8,10 @@ from torch.utils.data import DataLoader
 
 
 class HGDagger(BaseAlgorithm):
-    def __init__(self, model, save_dir, max_traj_length, device, 
+    def __init__(self, model, save_dir, max_traj_len, device, 
                  lr=1e-3, optimizer=torch.optim.Adam, is_ensemble=True) -> None:
         
-        super().__init__(model, save_dir, max_traj_length, device, 
+        super().__init__(model, save_dir, max_traj_len, device, 
                  lr=lr, optimizer=(None if is_ensemble else optimizer))
         
         self.is_ensemble = is_ensemble

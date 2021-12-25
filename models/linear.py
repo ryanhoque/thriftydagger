@@ -13,6 +13,7 @@ class LinearModel(nn.Module):
         with torch.no_grad():
             if self.normalize:
                 if len(output.shape) > 1:
+                    # print(output.shape, torch.norm(output, dim=1).view(-1, 1).shape)
                     output /= torch.norm(output, dim=1).view(-1, 1)
                 else:
                     output /= torch.norm(output)

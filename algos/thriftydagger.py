@@ -7,10 +7,10 @@ from torch.utils.data import DataLoader
 
 
 class ThriftyDagger:
-    def __init__(self, ensemble, max_traj_length, device, ensemble_lr=1e-3) -> None:
+    def __init__(self, ensemble, max_traj_len, device, ensemble_lr=1e-3) -> None:
         self.ensemble = ensemble
-        self.ensemble_optimizers = [torch.optim.Adam(self.ensemble.models[i].parameters(), lr=ensemble_lr) for i in range(len(self.ensemble.models))]
-        self.max_traj_length = max_traj_length
+        self.optimizers = [torch.optim.Adam(self.ensemble.models[i].parameters(), lr=ensemble_lr) for i in range(len(self.ensemble.models))]
+        self.max_traj_len = max_traj_len
         self.device = device
 
     def expert_pol(self, obs, env, robosuite_cfg):
@@ -34,7 +34,7 @@ class ThriftyDagger:
         return a
     
     def train(self, train_loader, val_loader, args):
-        for i, (model, optimizer) in enumerate(zip(self.ensemble.models, self.ensemble_optimizers)):
+        for i, (model, optimizer) in enumerate(zip(self.ensemble.models, self.optimizers)):
             model.train()
             for epoch in range(args.policy_train_epochs):
                 epoch_losses = []
@@ -81,7 +81,7 @@ class ThriftyDagger:
         for j in range(trajectories_per_rollout):
             curr_obs, d, expert_mode, traj_length = env.reset(), False, False, 0
             success = False
-            while traj_length <= self.max_traj_length and not success:
+            while traj_length <= self.max_traj_len and not success:
 
                 if expert_mode:
                     # Expert mode (either human or oracle algorithm)

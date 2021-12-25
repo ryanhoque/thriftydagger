@@ -11,11 +11,10 @@ import torch
 
 
 class BC(BaseAlgorithm):
-    def __init__(self, model, save_dir, max_traj_length, device, 
+    def __init__(self, model, model_kwargs, save_dir, max_traj_len, device, 
                  lr=1e-3, optimizer=torch.optim.Adam) -> None:
-        super().__init__(model, save_dir, max_traj_length, device, 
+        super().__init__(model, model_kwargs, save_dir, max_traj_len, device, 
                  lr=lr, optimizer=optimizer)
-    
     def run(self, train_data, val_data, args, env=None, robosuite_cfg=None) -> None:
         train_loader = DataLoader(train_data, batch_size=args.batch_size, shuffle=True)
         val_loader = DataLoader(val_data, batch_size=args.batch_size)

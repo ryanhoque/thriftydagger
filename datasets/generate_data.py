@@ -1,4 +1,5 @@
 from models import Ensemble, LinearModel, MLP
+from util import ACT_MAGNITUDE, MAX_REACH2D_TRAJ_LEN, REACH2D_SUCCESS_THRESH
 
 import argparse
 import os
@@ -6,15 +7,12 @@ import pickle
 import random
 import torch
 
-ACTION_MAGNITUDE = 0.1
-MAX_TRAJ_LENGTH = 100
-SUCCESS_THRESH = 0.1
 
 def parse_args():
     parser = argparse.ArgumentParser()
     
     # Sampling parameters
-    parser.add_argument('--env', type=str, default='Reach2D', help='Name of environment for data sampling.')
+    parser.add_argument('--environment', type=str, default='Reach2D', help='Name of environment for data sampling.')
     parser.add_argument('--robosuite', action='store_true', help='Whether or not the environment is a Robosuite environment')
     parser.add_argument('--N_trajectories', type=int, default=1000, help='Number of trajectories (demonstrations) to sample.')
     parser.add_argument('--add_noise', action='store_true', help='If true, noise is added to sampled states.')
@@ -48,7 +46,7 @@ def sample_reach(N_trajectories, range_x=3.0, range_y=3.0):
         # Sample goal from 1st quadrant
         goal_ee_state = torch.tensor([random.uniform(0, range_x), random.uniform(0, range_y)])
         action = goal_ee_state - curr_state
-        action = ACTION_MAGNITUDE * action / torch.norm(action)
+        action = ACT_MAGNITUDE * action / torch.norm(action)
         
         obs = []
         act = []
@@ -58,7 +56,7 @@ def sample_reach(N_trajectories, range_x=3.0, range_y=3.0):
             act.append(action)
             curr_state = curr_state + action
             
-        success = torch.norm(o[:2] - o[2:]) <= SUCCESS_THRESH
+        success = torch.norm(o[:2] - o[2:]) <= REACH2D_SUCCESS_THRESH
         demos.append({'obs': obs, 'act': act, 'success': success.item()})
         
     return demos
@@ -101,7 +99,7 @@ def get_model(args, device):
     model.load_state_dict(ckpt['model'])
     return model
 
-def sample_pi_r(N_trajectories, model, range_x=3.0, range_y=3.0, add_noise=False):
+def sample_pi_r(N_trajectories, model, max_traj_len, range_x=3.0, range_y=3.0, add_noise=False):
     demos = []
     
     for _ in range(N_trajectories):
@@ -111,13 +109,13 @@ def sample_pi_r(N_trajectories, model, range_x=3.0, range_y=3.0, add_noise=False
         traj_len = 0
         done = False
         
-        while not done and traj_len < MAX_TRAJ_LENGTH:
+        while not done and traj_len < max_traj_len:
             o = torch.cat([curr_state, goal_ee_state])
             obs.append(o.clone().detach())
             
             # Record oracle action given observation o
             a_target = goal_ee_state - curr_state
-            a_target = ACTION_MAGNITUDE * a_target / torch.norm(a_target)
+            a_target = ACT_MAGNITUDE * a_target / torch.norm(a_target)
             act.append(a_target.detach())
             
             # Take policy's action given observation o
@@ -134,9 +132,9 @@ def sample_pi_r(N_trajectories, model, range_x=3.0, range_y=3.0, add_noise=False
                         o[:2] = candidate
             
             traj_len += 1
-            done = ((o[:2][0] >= o[2:][0]) and (o[:2][1] >= o[2:][1]) or torch.norm(o[:2] - o[2:]) <= SUCCESS_THRESH)
+            done = ((o[:2][0] >= o[2:][0]) and (o[:2][1] >= o[2:][1]) or torch.norm(o[:2] - o[2:]) <= REACH2D_SUCCESS_THRESH)
             
-        success = torch.norm(o[:2] - o[2:]) <= SUCCESS_THRESH
+        success = torch.norm(o[:2] - o[2:]) <= REACH2D_SUCCESS_THRESH
         demos.append({'obs': obs, 'act': act, 'success': success.item()})
         
     return demos
@@ -148,12 +146,13 @@ def main(args):
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     
     print('Generating data...')
-    if args.env == 'Reach2D':
+    if args.environment == 'Reach2D':
+        max_traj_len = MAX_REACH2D_TRAJ_LEN
         if args.sample_mode == 'oracle':
             demos = sample_reach(args.N_trajectories)
         elif args.sample_mode == 'pi_r':
             model = get_model(args, device)
-            demos = sample_pi_r(N_trajectories=args.N_trajectories, model=model, 
+            demos = sample_pi_r(N_trajectories=args.N_trajectories, max_traj_len=max_traj_len, model=model, 
                                 add_noise=args.add_noise)
         elif args.sample_mode == 'oracle_pi_r_mix':
             model = get_model(args, device)
@@ -161,7 +160,7 @@ def main(args):
             num_pi_r = args.N_trajectories - num_oracle
             
             oracle_demos = sample_reach(num_oracle)
-            pi_r_demos = sample_pi_r(N_trajectories=num_pi_r, model=model, 
+            pi_r_demos = sample_pi_r(N_trajectories=num_pi_r, max_traj_len=max_traj_len, model=model, 
                                 add_noise=args.add_noise)
             demos = oracle_demos + pi_r_demos
         else:
@@ -169,7 +168,7 @@ def main(args):
                              [\'oracle\', \'pi_r\',\'oracle_pi_r_mix\'] but got {args.sample_mode}!')
             
     else:
-        raise NotImplementedError(f'Data generation for the environment \'{args.env}\' has not been implemented yet!')
+        raise NotImplementedError(f'Data generation for the environment \'{args.environment}\' has not been implemented yet!')
     
     print('Data generated! Saving data...')
     save_path = os.path.join(args.save_dir, args.save_fname)
