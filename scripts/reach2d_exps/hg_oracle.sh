@@ -1,6 +1,6 @@
 #!/bin/bash
 
-python main.py \
+python src/main.py \
 		--data_path ./data/pick-place-data-30.pkl \
 		--environment PickPlace \
 		--method HGDagger \

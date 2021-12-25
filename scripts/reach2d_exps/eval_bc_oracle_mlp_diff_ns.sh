@@ -3,7 +3,7 @@ NS=(50 100 200 300 400 500 750 1000)
 
 for N in "${NS[@]}"
 do
-		python main.py \
+		python src/main.py \
 			--exp_name dec23/oracle_reach2d_mlp_eval_N$N \
 			--N $N \
 			--eval_only \

@@ -1,5 +1,5 @@
 #!/bin/bash
-python main.py \
+python src/main.py \
 	--exp_name dec24/dagger_reach2d_mlp_test_refactor_eval \
 	--eval_only \
 	--model_path ./out/dec24/dagger_reach2d_mlp_test_refactor/model_4.pt\
