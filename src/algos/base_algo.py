@@ -103,7 +103,7 @@ class BaseAlgorithm:
             # Save state dict for each model/optimizer
             ckpt_dict = {
                 'models': [model.state_dict() for model in self.model.models],
-                'optimizers': [optimizer.state_dict() for optimizer in self.model.optimizers],
+                'optimizers': [optimizer.state_dict() for optimizer in self.optimizers],
                 'epoch': epoch
             }
         else:

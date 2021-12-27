@@ -1,12 +1,18 @@
+from environments import CustomWrapper
 from models import LinearModel, MLP
-from util import ACT_MAGNITUDE
+from robosuite import load_controller_config
+from robosuite.devices import Keyboard
+from robosuite.wrappers import GymWrapper, VisualizationWrapper
+from src.util.constant import REACH2D_ACT_MAGNITUDE
+
+import robosuite as suite
 
 def get_model_type_and_kwargs(args, obs_dim, act_dim):
     if args.arch == 'LinearModel':
         model_type = LinearModel
         if args.environment == 'Reach2D':
             model_kwargs = dict(obs_dim=obs_dim, act_dim=act_dim, 
-                                scale=ACT_MAGNITUDE, normalize=True)
+                                scale=REACH2D_ACT_MAGNITUDE, normalize=True)
         else:
             model_kwargs = dict(obs_dim=obs_dim, act_dim=act_dim)
     elif args.arch == 'MLP':
@@ -17,3 +23,80 @@ def get_model_type_and_kwargs(args, obs_dim, act_dim):
         raise NotImplementedError(f'The architecture {args.arch} has not been implemented yet!')
     
     return model_type, model_kwargs
+
+def setup_robosuite(args, max_traj_len):
+    render = not args.no_render
+    controller_config = load_controller_config(default_controller='OSC_POSE')
+    config = {
+        "env_name": args.environment,
+        "robots": "UR5e",
+        "controller_configs": controller_config,
+    }
+
+    if args.environment == 'NutAssembly':
+        env = suite.make(
+            **config,
+            has_renderer=render,
+            has_offscreen_renderer=False,
+            render_camera="agentview",
+            single_object_mode=2, # env has 1 nut instead of 2
+            nut_type="round",
+            ignore_done=True,
+            use_camera_obs=False,
+            reward_shaping=True,
+            control_freq=20,
+            hard_reset=True,
+            use_object_obs=True
+        )
+    elif args.environment == 'PickPlace':
+            env = suite.make(
+                **config,
+                has_renderer=render,
+                has_offscreen_renderer=False,
+                render_camera="agentview",
+                single_object_mode=2,
+                object_type='cereal',
+                ignore_done=True,
+                use_camera_obs=False,
+                reward_shaping=True,
+                control_freq=20,
+                hard_reset=True,
+                use_object_obs=True
+            )
+    else:
+        env = suite.make(
+            **config,
+            has_renderer=render,
+            has_offscreen_renderer=False,
+            render_camera="agentview",
+            ignore_done=True,
+            use_camera_obs=False,
+            reward_shaping=True,
+            control_freq=20,
+            hard_reset=True,
+            use_object_obs=True
+        )
+
+    env = GymWrapper(env)
+    env = VisualizationWrapper(env, indicator_configs=None)
+    env = CustomWrapper(env, render=render)
+
+    input_device = Keyboard(pos_sensitivity=0.5, rot_sensitivity=3.0)
+
+    if render:
+        env.viewer.add_keypress_callback("any", input_device.on_press)
+        env.viewer.add_keyup_callback("any", input_device.on_release)
+        env.viewer.add_keyrepeat_callback("any", input_device.on_press)
+
+    arm_ = 'right'
+    config_ = 'single-arm-opposed'
+    active_robot = env.robots[arm_ == 'left']
+    robosuite_cfg = {
+        'max_ep_length': max_traj_len, 
+        'input_device': input_device,
+        'arm': arm_,
+        'env_config': config_,
+        'active_robot': active_robot
+        }
+
+    return env, robosuite_cfg

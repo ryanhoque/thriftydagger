@@ -1,5 +1,5 @@
 from models import Ensemble, LinearModel, MLP
-from util import ACT_MAGNITUDE, MAX_REACH2D_TRAJ_LEN, REACH2D_SUCCESS_THRESH
+from src.util import REACH2D_ACT_MAGNITUDE, REACH2D_MAX_TRAJ_LEN, REACH2D_SUCCESS_THRESH
 
 import argparse
 import os
@@ -46,7 +46,7 @@ def sample_reach(N_trajectories, range_x=3.0, range_y=3.0):
         # Sample goal from 1st quadrant
         goal_ee_state = torch.tensor([random.uniform(0, range_x), random.uniform(0, range_y)])
         action = goal_ee_state - curr_state
-        action = ACT_MAGNITUDE * action / torch.norm(action)
+        action = REACH2D_ACT_MAGNITUDE * action / torch.norm(action)
         
         obs = []
         act = []
@@ -115,7 +115,7 @@ def sample_pi_r(N_trajectories, model, max_traj_len, range_x=3.0, range_y=3.0, a
             
             # Record oracle action given observation o
             a_target = goal_ee_state - curr_state
-            a_target = ACT_MAGNITUDE * a_target / torch.norm(a_target)
+            a_target = REACH2D_ACT_MAGNITUDE * a_target / torch.norm(a_target)
             act.append(a_target.detach())
             
             # Take policy's action given observation o
@@ -147,7 +147,7 @@ def main(args):
     
     print('Generating data...')
     if args.environment == 'Reach2D':
-        max_traj_len = MAX_REACH2D_TRAJ_LEN
+        max_traj_len = REACH2D_MAX_TRAJ_LEN
         if args.sample_mode == 'oracle':
             demos = sample_reach(args.N_trajectories)
         elif args.sample_mode == 'pi_r':

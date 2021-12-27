@@ -1,17 +1,17 @@
 from typing import Tuple
 from torch.utils.data import Dataset
+from src.util import MAX_BUFFER_SIZE
 
 import numpy as np
 import torch
 
-MAX_BUFFER_SIZE = int(3e4)
 
 class BufferDataset(Dataset):
     def __init__(self, data, max_size=MAX_BUFFER_SIZE, shuffle=True, split='train', train_perc=0.9) -> None:
         self.max_size = max_size
         self.ptr = 0
-        self.obs, self.act = self.split_data(
-            data, split, train_perc, shuffle=shuffle)
+        self.obs, self.act, self.curr_size = self.split_data(data, split, 
+                                                             train_perc, shuffle=shuffle)
 
     def split_data(self, data, split, train_perc, shuffle) -> Tuple[torch.Tensor, torch.Tensor]:
         obs = data['obs']
@@ -20,9 +20,11 @@ class BufferDataset(Dataset):
         if split == 'train':
             obs = obs[:num_train]
             act = act[:num_train]
+            curr_size = len(obs)
         elif split == 'val':
             obs = obs[num_train:]
             act = act[num_train:]
+            curr_size = len(obs)
         else:
             raise ValueError(
                 f'split must be one of {{\'train\', \'val\'}}; got split=\'{split}\' instead!')
@@ -32,11 +34,13 @@ class BufferDataset(Dataset):
             np.random.shuffle(idxs)
             obs = obs[idxs]
             act = act[idxs]
-        
-        self.curr_size = len(obs)
-        obs = torch.cat([obs, torch.zeros(self.max_size - len(obs), obs.shape[1])])
-        act = torch.cat([act, torch.zeros(self.max_size - len(act), act.shape[1])])
-        return obs, act
+
+        obs = torch.cat(
+            [obs, torch.zeros(self.max_size - len(obs), obs.shape[1])])
+        act = torch.cat(
+            [act, torch.zeros(self.max_size - len(act), act.shape[1])])
+
+        return obs, act, curr_size
 
     def update_buffer(self, obs, act) -> None:
         self.obs[self.ptr] = obs

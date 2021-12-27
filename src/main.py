@@ -1,22 +1,16 @@
 from algos import BC, Dagger, HGDagger
 from datasets.util import get_dataset
 from datetime import datetime
-from environments import CustomWrapper, Reach2D
+from environments import Reach2D
 from models import Ensemble
-from robosuite import load_controller_config
-from robosuite.devices import Keyboard
-from robosuite.wrappers import GymWrapper, VisualizationWrapper
-from util import get_model_type_and_kwargs, MAX_PICKPLACE_TRAJ_LEN, MAX_REACH2D_TRAJ_LEN
+
+from util import get_model_type_and_kwargs, setup_robosuite, PICKPLACE_MAX_TRAJ_LEN, REACH2D_MAX_TRAJ_LEN
 
 import argparse
 import numpy as np
 import os
 import random
-import robosuite as suite
 import torch
-
-ENVS = ['NutAssembly', 'Reach2D', 'PickPlace']
-ARCHS = ['LinearModel', 'MLP']
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -61,82 +55,6 @@ def parse_args():
 
     return parser.parse_args()
 
-def setup_robosuite(args, max_traj_len):
-    render = not args.no_render
-    controller_config = load_controller_config(default_controller='OSC_POSE')
-    config = {
-        "env_name": args.environment,
-        "robots": "UR5e",
-        "controller_configs": controller_config,
-    }
-
-    if args.environment == 'NutAssembly':
-        env = suite.make(
-            **config,
-            has_renderer=render,
-            has_offscreen_renderer=False,
-            render_camera="agentview",
-            single_object_mode=2, # env has 1 nut instead of 2
-            nut_type="round",
-            ignore_done=True,
-            use_camera_obs=False,
-            reward_shaping=True,
-            control_freq=20,
-            hard_reset=True,
-            use_object_obs=True
-        )
-    elif args.environment == 'PickPlace':
-            env = suite.make(
-                **config,
-                has_renderer=render,
-                has_offscreen_renderer=False,
-                render_camera="agentview",
-                single_object_mode=2,
-                object_type='cereal',
-                ignore_done=True,
-                use_camera_obs=False,
-                reward_shaping=True,
-                control_freq=20,
-                hard_reset=True,
-                use_object_obs=True
-            )
-    else:
-        env = suite.make(
-            **config,
-            has_renderer=render,
-            has_offscreen_renderer=False,
-            render_camera="agentview",
-            ignore_done=True,
-            use_camera_obs=False,
-            reward_shaping=True,
-            control_freq=20,
-            hard_reset=True,
-            use_object_obs=True
-        )
-
-    env = GymWrapper(env)
-    env = VisualizationWrapper(env, indicator_configs=None)
-    env = CustomWrapper(env, render=render)
-
-    input_device = Keyboard(pos_sensitivity=0.5, rot_sensitivity=3.0)
-
-    if render:
-        env.viewer.add_keypress_callback("any", input_device.on_press)
-        env.viewer.add_keyup_callback("any", input_device.on_release)
-        env.viewer.add_keyrepeat_callback("any", input_device.on_press)
-
-    arm_ = 'right'
-    config_ = 'single-arm-opposed'
-    active_robot = env.robots[arm_ == 'left']
-    robosuite_cfg = {
-        'max_ep_length': max_traj_len, 
-        'input_device': input_device,
-        'arm': arm_,
-        'env_config': config_,
-        'active_robot': active_robot
-        }
-
-    return env, robosuite_cfg
 
 def main(args):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -151,28 +69,26 @@ def main(args):
     if not args.overwrite and os.path.isdir(save_dir):
         raise FileExistsError(f'The directory {save_dir} already exists. If you want to overwrite it, rerun with the argument --overwrite.')
     os.makedirs(save_dir, exist_ok=True)
-        
     
     # Set up environment
-    if args.environment == 'Reach2D': 
-        max_traj_len = MAX_REACH2D_TRAJ_LEN
-    elif args.environment == 'PickPlace':
-        max_traj_len = MAX_PICKPLACE_TRAJ_LEN
-    else:
-        raise NotImplementedError(f'Max trajectory length not yet defined for the environment {args.environment}!')
-        
     if args.robosuite:
+        if args.environment == 'PickPlace':
+            max_traj_len = PICKPLACE_MAX_TRAJ_LEN
+        else:
+            raise NotImplementedError(f'Max trajectory length not yet defined for the environment {args.environment}!')
         env, robosuite_cfg = setup_robosuite(args, max_traj_len)
         obs_dim = env.observation_space.shape[0]
         act_dim = env.action_space.shape[0] 
         act_limit = env.action_space.high[0] 
-    else:
-        # TODO: have config files for non-robosuite environments
+    elif args.environment == 'Reach2D':
+        max_traj_len = REACH2D_MAX_TRAJ_LEN
         env = Reach2D()
         robosuite_cfg = None
-        obs_dim = 4
-        act_dim = 2
+        obs_dim = env.obs_dim
+        act_dim = env.act_dim
         act_limit = float('inf')
+    else:
+        raise NotImplementedError(f'Environment {args.environment} has not been implemented yet!')
         
     
     # Initialize model
@@ -187,11 +103,15 @@ def main(args):
     else:
         raise ValueError(f'Got {args.num_models} for args.num_models, but value must be an integer >= 1!')
         
-    # Load model if in eval_only mode
+    # Load model checkpoint if in eval_only mode
     if args.eval_only:
         model.eval()
         ckpt = torch.load(args.model_path)
-        model.load_state_dict(ckpt['model'])
+        if args.num_models > 1:
+            for ensemble_model, state_dict in zip(model.models, ckpt['models']):
+                ensemble_model.load_state_dict(state_dict)
+        else:
+            model.load_state_dict(ckpt['model'])
         
     # Set up method
     if args.method == 'Dagger':

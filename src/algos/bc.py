@@ -22,5 +22,9 @@ class BC(BaseAlgorithm):
         if args.robosuite:
             robosuite_cfg['input_device'].start_control()
         # Train & save metrics
-        self.train(self.model, self.optimizer, train_loader, val_loader, args)
+        if self.is_ensemble:
+            for i, (model, optimizer) in enumerate(zip(self.model.models, self.optimizers)): 
+                self.train(model, optimizer, train_loader,val_loader, args)
+        else:
+            self.train(self.model, self.optimizer, train_loader, val_loader, args)
         self._save_metrics()

@@ -15,8 +15,6 @@ class Ensemble(nn.Module):
         # No grad since we don't want to backpropagate over taking the average of the ensemble
         with torch.no_grad():
             acts = []
-            # TODO: currently all datasets consist of numpy arrays so we have to do this conversion;
-            #       should be saving data as tensors
             for model in self.models:
-                acts.append(model(obs).cpu().numpy())
-            return np.mean(np.array(acts), axis=0)
+                acts.append(model(obs).detach())
+            return torch.mean(torch.stack(acts), dim=0)

@@ -1,4 +1,4 @@
-from util import REACH2D_SUCCESS_THRESH
+from util import REACH2D_ACT_DIM, REACH2D_OBS_DIM, REACH2D_SUCCESS_THRESH
 
 import random
 import torch
@@ -10,7 +10,9 @@ class Reach2D:
         self.range_y = range_y
         self.curr_state = torch.zeros(2)
         self.goal_state = torch.tensor([random.uniform(0, self.range_x), random.uniform(0, self.range_y)])
-
+        self.act_dim = REACH2D_ACT_DIM
+        self.obs_dim = REACH2D_OBS_DIM
+        
     def close(self):
         '''
         Empty function so callers don't break with use of this class
