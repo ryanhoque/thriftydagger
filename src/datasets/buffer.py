@@ -36,9 +36,9 @@ class BufferDataset(Dataset):
             act = act[idxs]
 
         obs = torch.cat(
-            [obs, torch.zeros(self.max_size - len(obs), obs.shape[1])])
+            [obs, torch.zeros(max(self.max_size - len(obs), self.max_size), obs.shape[1])])
         act = torch.cat(
-            [act, torch.zeros(self.max_size - len(act), act.shape[1])])
+            [act, torch.zeros(max(self.max_size - len(act), self.max_size), act.shape[1])])
 
         return obs, act, curr_size
 
