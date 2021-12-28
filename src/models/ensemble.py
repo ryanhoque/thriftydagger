@@ -16,5 +16,5 @@ class Ensemble(nn.Module):
         with torch.no_grad():
             acts = []
             for model in self.models:
-                acts.append(model(obs).detach())
+                acts.append(model(obs).detach().to(self.device))
             return torch.mean(torch.stack(acts), dim=0)
