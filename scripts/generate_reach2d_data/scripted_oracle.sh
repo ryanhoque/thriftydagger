@@ -1,7 +1,13 @@
 #!/bin/bash
+ENVIRONMENT=Reach2D
+N=1000
+SAMPLE_MODE=oracle
+SEED=0
+
 python ./src/generate_data.py \
-    --env Reach2D \
-    --N_trajectories 1000 \
-    --seed 0 \
-    --save_fname scripted_oracle_reach2d.pkl \
-    --sample_mode oracle
+    --save_dir ./data/$ENVIRONMENT \
+    --environment $ENVIRONMENT \
+    --N_trajectories $N \
+    --seed $SEED \
+    --save_fname $SAMPLE_MODE.pkl \
+    --sample_mode $SAMPLE_MODE

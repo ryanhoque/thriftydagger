@@ -1,8 +1,13 @@
 #!/bin/bash
+ENVIRONMENT=Reach2D
+N=1000
+SAMPLE_MODE=pi_r
+SEED=0
+
 python ./src/generate_data.py \
-    --environment Reach2D \
-    --N_trajectories 1000 \
-    --model_path ./out/dec25/ensemble_dagger_reach2d_mlp_test_refactor/model_4.pt \
-    --seed 0 \
-    --save_fname pi_r.pkl \
-    --sample_mode pi_r
+    --save_dir ./data/$ENVIRONMENT \
+    --environment $ENVIRONMENT \
+    --N_trajectories $N \
+    --seed $SEED \
+    --save_fname $SAMPLE_MODE.pkl \
+    --sample_mode $SAMPLE_MODE
