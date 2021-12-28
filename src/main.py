@@ -1,10 +1,10 @@
 from algos import BC, Dagger, HGDagger
+from constants import PICKPLACE_MAX_TRAJ_LEN, REACH2D_MAX_TRAJ_LEN
 from datasets.util import get_dataset
 from datetime import datetime
 from environments import Reach2D
-from models import Ensemble
+from util import get_model_type_and_kwargs, init_model, setup_robosuite
 
-from util import get_model_type_and_kwargs, setup_robosuite, PICKPLACE_MAX_TRAJ_LEN, REACH2D_MAX_TRAJ_LEN
 
 import argparse
 import numpy as np
@@ -93,15 +93,15 @@ def main(args):
     
     # Initialize model
     model_type, model_kwargs = get_model_type_and_kwargs(args, obs_dim, act_dim)
-    
-    if args.num_models > 1:
-        model_kwargs = dict(model_kwargs=model_kwargs, device=device, 
-                            num_models=args.num_models, model_type=model_type)
-        model = Ensemble(**model_kwargs)
-    elif args.num_models == 1:
-        model = model_type(**model_kwargs)
-    else:
-        raise ValueError(f'Got {args.num_models} for args.num_models, but value must be an integer >= 1!')
+    model = init_model(model_type, model_kwargs, device=device, num_models=args.num_models)
+    # if args.num_models > 1:
+    #     model_kwargs = dict(model_kwargs=model_kwargs, device=device, 
+    #                         num_models=args.num_models, model_type=model_type)
+    #     model = Ensemble(**model_kwargs)
+    # elif args.num_models == 1:
+    #     model = model_type(**model_kwargs)
+    # else:
+    #     raise ValueError(f'Got {args.num_models} for args.num_models, but value must be an integer >= 1!')
         
     # Load model checkpoint if in eval_only mode
     if args.eval_only:

@@ -1,5 +1,6 @@
-from models import Ensemble, LinearModel, MLP
-from src.util import REACH2D_ACT_MAGNITUDE, REACH2D_MAX_TRAJ_LEN, REACH2D_SUCCESS_THRESH
+from constants import REACH2D_ACT_MAGNITUDE, REACH2D_MAX_TRAJ_LEN, REACH2D_SUCCESS_THRESH
+from environments import Reach2D
+from util import get_model_type_and_kwargs, init_model
 
 import argparse
 import os
@@ -61,44 +62,6 @@ def sample_reach(N_trajectories, range_x=3.0, range_y=3.0):
         
     return demos
 
-# TODO: make this a util function?
-def get_model(args, device):
-    if args.robosuite:
-        pass
-        # env, robosuite_cfg = setup_robosuite(args)
-        # obs_dim = env.observation_space.shape[0]
-        # act_dim = env.action_space.shape[0] 
-        # act_limit = env.action_space.high[0] 
-    else:
-        # TODO: have config files for non-robosuite environments
-        env = None
-        robosuite_cfg = None
-        obs_dim = 4
-        act_dim = 2
-        act_limit = float('inf')
-    if args.arch == 'LinearModel':
-        if args.num_models == 1:
-            model = LinearModel(obs_dim, act_dim)
-        elif args.num_models > 1:
-            model_args = [obs_dim, act_dim]
-            model = Ensemble(model_args, device, args.num_models, LinearModel)
-        else:
-            raise ValueError(f'Got {args.num_models} for args.num_models, but value must be an integer >= 1!')
-    elif args.arch == 'MLP':
-        if args.num_models == 1:
-            model = MLP(obs_dim, act_dim, args.hidden_size)
-        elif args.num_models > 1:
-            model_args = [obs_dim, act_dim, args.hidden_size, act_limit]
-            model = Ensemble(model_args, device, args.num_models, MLP)
-        else:
-            raise ValueError(f'Got {args.num_models} for args.num_models, but value must be an integer >= 1!')
-    else:
-        raise NotImplementedError(f'The architecture {args.arch} has not been implemented yet!')
-    
-    ckpt = torch.load(args.model_path)
-    model.load_state_dict(ckpt['model'])
-    return model
-
 def sample_pi_r(N_trajectories, model, max_traj_len, range_x=3.0, range_y=3.0, add_noise=False):
     demos = []
     
@@ -139,7 +102,6 @@ def sample_pi_r(N_trajectories, model, max_traj_len, range_x=3.0, range_y=3.0, a
         
     return demos
 
-
 def main(args):
     torch.manual_seed(args.seed)
     random.seed(args.seed)
@@ -148,14 +110,17 @@ def main(args):
     print('Generating data...')
     if args.environment == 'Reach2D':
         max_traj_len = REACH2D_MAX_TRAJ_LEN
+        env = Reach2D()
         if args.sample_mode == 'oracle':
             demos = sample_reach(args.N_trajectories)
-        elif args.sample_mode == 'pi_r':
-            model = get_model(args, device)
+        elif args.sample_mode  == 'pi_r':
+            model_type, model_kwargs = get_model_type_and_kwargs(args, obs_dim=env.obs_dim, act_dim=env.act_dim)
+            model = init_model(model_type, model_kwargs, device=device, num_models=args.num_models)
             demos = sample_pi_r(N_trajectories=args.N_trajectories, max_traj_len=max_traj_len, model=model, 
                                 add_noise=args.add_noise)
         elif args.sample_mode == 'oracle_pi_r_mix':
-            model = get_model(args, device)
+            model_type, model_kwargs = get_model_type_and_kwargs(args, obs_dim=env.obs_dim, act_dim=env.act_dim)
+            model = init_model(model_type, model_kwargs, device=device, num_models=args.num_models)
             num_oracle = int(args.perc_oracle * args.N_trajectories)
             num_pi_r = args.N_trajectories - num_oracle
             
@@ -166,7 +131,6 @@ def main(args):
         else:
             raise ValueError(f'args.sample_mode must be one of \
                              [\'oracle\', \'pi_r\',\'oracle_pi_r_mix\'] but got {args.sample_mode}!')
-            
     else:
         raise NotImplementedError(f'Data generation for the environment \'{args.environment}\' has not been implemented yet!')
     

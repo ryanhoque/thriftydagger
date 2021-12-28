@@ -1,9 +1,9 @@
 from environments import CustomWrapper
-from models import LinearModel, MLP
+from models import Ensemble, LinearModel, MLP
 from robosuite import load_controller_config
 from robosuite.devices import Keyboard
 from robosuite.wrappers import GymWrapper, VisualizationWrapper
-from src.util.constant import REACH2D_ACT_MAGNITUDE
+from src.constants import REACH2D_ACT_MAGNITUDE
 
 import robosuite as suite
 
@@ -23,6 +23,18 @@ def get_model_type_and_kwargs(args, obs_dim, act_dim):
         raise NotImplementedError(f'The architecture {args.arch} has not been implemented yet!')
     
     return model_type, model_kwargs
+
+def init_model(model_type, model_kwargs, device, num_models):
+    if num_models > 1:
+        model_kwargs = dict(model_kwargs=model_kwargs, device=device, 
+                            num_models=num_models, model_type=model_type)
+        model = Ensemble(**model_kwargs)
+    elif num_models == 1:
+        model = model_type(**model_kwargs)
+    else:
+        raise ValueError(f'Got {num_models} for args.num_models, but value must be an integer >= 1!')
+
+    return model
 
 def setup_robosuite(args, max_traj_len):
     render = not args.no_render

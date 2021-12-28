@@ -1,5 +1,5 @@
 #!/bin/bash
-python ./datasets/generate_data.py \
+python ./src/generate_data.py \
     --env Reach2D \
     --N_trajectories 1000 \
     --seed 0 \

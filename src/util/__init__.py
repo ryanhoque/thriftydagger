@@ -1,2 +1,1 @@
-from util.constant import *
-from util.util import get_model_type_and_kwargs, setup_robosuite
+from util.util import get_model_type_and_kwargs, init_model, setup_robosuite

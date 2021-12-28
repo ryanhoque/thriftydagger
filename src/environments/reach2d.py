@@ -1,4 +1,4 @@
-from util import REACH2D_ACT_DIM, REACH2D_OBS_DIM, REACH2D_SUCCESS_THRESH
+from constants import REACH2D_ACT_DIM, REACH2D_OBS_DIM, REACH2D_SUCCESS_THRESH
 
 import random
 import torch
