@@ -1,9 +1,10 @@
 #!/bin/bash
-ARCH=MLP
-NS=(50 100 200 300 400 500 750 1000)
-ENVIRONMENT=Reach2D
+ARCH=LinearModel
 DATA_SOURCES=(oracle pi_r oracle_pi_r_mix)
-METHOD=Dagger
+DATE=dec28
+ENVIRONMENT=Reach2D
+METHOD=BC
+NS=(50 100 200 300 400 500 750 1000)
 NUM_MODELS=1
 SEED=4
 
@@ -20,7 +21,7 @@ do
     do
         python src/main.py \
             --N $N \
-            --exp_name dec27/$ENVIRONMENT/$METHOD/$EXP_NAME_ARCH/$DATA_SOURCE\_N$N\_seed$SEED \
+            --exp_name $DATE/$ENVIRONMENT/$METHOD/$EXP_NAME_ARCH/$DATA_SOURCE\_N$N\_seed$SEED \
             --data_path ./data/$ENVIRONMENT/$DATA_SOURCE.pkl \
             --environment $ENVIRONMENT \
             --method $METHOD \

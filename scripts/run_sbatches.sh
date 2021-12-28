@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for experiment in /iliad/u/madeline/thriftydagger/scripts/dec27_vary_N/train/*/*.sh 
+for experiment in /iliad/u/madeline/thriftydagger/scripts/vary_N/train/*/*.sh 
 do
     echo $experiment
     chmod u+x $experiment

@@ -110,17 +110,19 @@ def main(args):
     print('Generating data...')
     if args.environment == 'Reach2D':
         max_traj_len = REACH2D_MAX_TRAJ_LEN
-        env = Reach2D()
+        env = Reach2D(device)
         if args.sample_mode == 'oracle':
             demos = sample_reach(args.N_trajectories)
         elif args.sample_mode  == 'pi_r':
             model_type, model_kwargs = get_model_type_and_kwargs(args, obs_dim=env.obs_dim, act_dim=env.act_dim)
             model = init_model(model_type, model_kwargs, device=device, num_models=args.num_models)
+            model.to(device)
             demos = sample_pi_r(N_trajectories=args.N_trajectories, max_traj_len=max_traj_len, model=model, 
                                 add_noise=args.add_noise)
         elif args.sample_mode == 'oracle_pi_r_mix':
             model_type, model_kwargs = get_model_type_and_kwargs(args, obs_dim=env.obs_dim, act_dim=env.act_dim)
             model = init_model(model_type, model_kwargs, device=device, num_models=args.num_models)
+            model.to(device)
             num_oracle = int(args.perc_oracle * args.N_trajectories)
             num_pi_r = args.N_trajectories - num_oracle
             

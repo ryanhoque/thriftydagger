@@ -1,10 +1,11 @@
 #!/bin/bash
-ARCH=MLP
-NS=(50 100 200 300 400 500 750 1000)
-ENVIRONMENT=Reach2D
+ARCH=LinearModel
+CHECKPOINT_FILE=model_4.pt
 DATA_SOURCES=(oracle pi_r oracle_pi_r_mix)
+ENVIRONMENT=Reach2D
 METHOD=BC
-NUM_MODELS=1
+NS=(50 100 200 300 400 500 750 1000)
+NUM_MODELS=5
 SEED=4
 
 if [ $NUM_MODELS -gt 1 ]
@@ -20,7 +21,9 @@ do
     do
         python src/main.py \
             --N $N \
-            --exp_name dec27/$ENVIRONMENT/$METHOD/$EXP_NAME_ARCH/$DATA_SOURCE\_N$N\_seed$SEED \
+            --eval_only \
+            --model_path ./out/dec28_test/$ENVIRONMENT/$METHOD/$EXP_NAME_ARCH/$DATA_SOURCE\_N$N\_seed$SEED/$CHECKPOINT_FILE \
+            --exp_name dec28_test/$ENVIRONMENT/$METHOD/$EXP_NAME_ARCH/eval/$DATA_SOURCE\_N$N\_seed$SEED \
             --data_path ./data/$ENVIRONMENT/$DATA_SOURCE.pkl \
             --environment $ENVIRONMENT \
             --method $METHOD \

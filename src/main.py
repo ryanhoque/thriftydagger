@@ -82,7 +82,7 @@ def main(args):
         act_limit = env.action_space.high[0] 
     elif args.environment == 'Reach2D':
         max_traj_len = REACH2D_MAX_TRAJ_LEN
-        env = Reach2D()
+        env = Reach2D(device)
         robosuite_cfg = None
         obs_dim = env.obs_dim
         act_dim = env.act_dim
@@ -94,14 +94,7 @@ def main(args):
     # Initialize model
     model_type, model_kwargs = get_model_type_and_kwargs(args, obs_dim, act_dim)
     model = init_model(model_type, model_kwargs, device=device, num_models=args.num_models)
-    # if args.num_models > 1:
-    #     model_kwargs = dict(model_kwargs=model_kwargs, device=device, 
-    #                         num_models=args.num_models, model_type=model_type)
-    #     model = Ensemble(**model_kwargs)
-    # elif args.num_models == 1:
-    #     model = model_type(**model_kwargs)
-    # else:
-    #     raise ValueError(f'Got {args.num_models} for args.num_models, but value must be an integer >= 1!')
+    model.to(device)
         
     # Load model checkpoint if in eval_only mode
     if args.eval_only:

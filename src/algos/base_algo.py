@@ -33,7 +33,7 @@ class BaseAlgorithm:
             self.optimizer = self.optimizer_type(self.model.parameters(), lr=self.lr)
     
     def _reset_model(self):
-        self.model = self.model_type(**self.model_kwargs)
+        self.model = self.model_type(**self.model_kwargs).to(self.device)
     
     
     def _rollout(self, env, robosuite_cfg, trajectories_per_rollout, auto_only=False):
@@ -58,7 +58,7 @@ class BaseAlgorithm:
                         print('Switch to Expert Mode')
                         expert_mode = True
                         continue
-                    a = self.model(curr_obs)
+                    a = self.model(curr_obs).to(self.device)
                     next_obs, _, _, _ = env.step(a)
                 act.append(a)
                 traj_length += 1
@@ -138,6 +138,8 @@ class BaseAlgorithm:
             epoch_losses = []
             for (obs, act) in prog_bar:
                 optimizer.zero_grad()
+                obs = obs.to(self.device)
+                act = act.to(self.device)
                 pred_act = model(obs)
                 loss = torch.mean(torch.sum((act - pred_act)**2, dim=1))
                 loss.backward()
@@ -161,6 +163,8 @@ class BaseAlgorithm:
         model.eval()
         val_losses = []
         for (obs, act) in val_loader:
+            obs = obs.to(self.device)
+            act = act.to(self.device)
             pred_act = model(obs)
             loss = torch.mean(torch.sum((act - pred_act)**2, dim=1))
             val_losses.append(loss.item())
