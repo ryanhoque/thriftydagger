@@ -18,13 +18,13 @@ def load_data_from_file(file_path, N, shuffle=True):
         data = pickle.load(f)
         data = np.array(data)
         
-    # N_available = len(data)
-    # if N < N_available:
-    #     idxs = torch.randperm(len(data))
-    #     data = data[idxs]
-    #     data = data[:N]
-    # elif N > N_available:
-    #     print(f'Warning: requested size of dataset N={N} is greater than {N_available}, the size of the dataset available. Using entire dataset.')
+    N_available = len(data)
+    if N < N_available:
+        idxs = torch.randperm(len(data))
+        data = data[idxs]
+        data = data[:N]
+    elif N > N_available:
+        print(f'Warning: requested size of dataset N={N} is greater than {N_available}, the size of the dataset available. Using entire dataset.')
     
     obs = []
     act = []
