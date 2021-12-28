@@ -1,5 +1,5 @@
 from typing import Tuple
-from src.constants import MAX_BUFFER_SIZE
+from constants import MAX_BUFFER_SIZE
 from torch.utils.data import Dataset
 
 import numpy as np

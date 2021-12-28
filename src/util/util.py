@@ -3,7 +3,7 @@ from models import Ensemble, LinearModel, MLP
 from robosuite import load_controller_config
 from robosuite.devices import Keyboard
 from robosuite.wrappers import GymWrapper, VisualizationWrapper
-from src.constants import REACH2D_ACT_MAGNITUDE
+from constants import REACH2D_ACT_MAGNITUDE
 
 import robosuite as suite
 
