@@ -28,6 +28,7 @@ do
             --arch $ARCH \
             --num_models $NUM_MODELS \
             --seed $SEED \
-            --overwrite
+            --use_indicator_beta \
+            --dagger_beta 1.0
     done
 done

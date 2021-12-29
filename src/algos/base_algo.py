@@ -7,6 +7,7 @@ from collections import defaultdict
 from models import Ensemble
 from robosuite.utils.input_utils import input2action
 from tqdm import tqdm
+from util import init_model
 
 class BaseAlgorithm:
     def __init__(self, model, model_kwargs, save_dir, max_traj_len, device, 
@@ -18,13 +19,12 @@ class BaseAlgorithm:
         self.model_kwargs = model_kwargs
         self.save_dir = save_dir
     
-        self.metrics = defaultdict(list)
         self.model_type = type(model)
         self.optimizer_type = optimizer
         self.is_ensemble = self.model_type == Ensemble
         
         self._setup_optimizer()
-        
+        self._setup_metrics()
     
     def _setup_optimizer(self):
         if self.is_ensemble:
@@ -32,9 +32,21 @@ class BaseAlgorithm:
         else:
             self.optimizer = self.optimizer_type(self.model.parameters(), lr=self.lr)
     
-    def _reset_model(self):
-        self.model = self.model_type(**self.model_kwargs).to(self.device)
+    def _setup_metrics(self):
+        if self.is_ensemble:
+            self.ensemble_metrics = [defaultdict(list)] * len(self.model.models)
+        else:
+            self.metrics = defaultdict(list)
     
+    def _reset_model(self):
+        if self.is_ensemble:
+            num_models = len(self.model.models)
+            ensemble_model_type = type(self.model.models[0])
+            model = init_model(ensemble_model_type, self.model_kwargs, device=self.device, num_models=num_models)
+        else:
+            model = init_model(self.model_type, self.model_kwargs, device=self.device, num_models=1)
+            
+        model.to(self.device)
     
     def _rollout(self, env, robosuite_cfg, trajectories_per_rollout, auto_only=False):
         data = []
@@ -122,13 +134,24 @@ class BaseAlgorithm:
         torch.save(ckpt_dict, save_path)
     
     def _save_metrics(self):
-        save_path = os.path.join(self.save_dir, 'metrics.pkl')
-        df = pd.DataFrame(self.metrics)
-        df.to_pickle(save_path)
+        if self.is_ensemble:
+            for i, metrics in enumerate(self.ensemble_metrics):
+                save_path = os.path.join(self.save_dir, f'model{i}_metrics.pkl')
+                df = pd.DataFrame(metrics)
+                df.to_pickle(save_path)
+        else:
+            save_path = os.path.join(self.save_dir, 'metrics.pkl')
+            df = pd.DataFrame(self.metrics)
+            df.to_pickle(save_path)
         
     def _update_metrics(self, **kwargs):
-        for key, val in kwargs.items():
-            self.metrics[key].append(val)
+        if self.is_ensemble:
+            for metrics in self.ensemble_metrics:
+                for key, val in kwargs.items():
+                    metrics[key].append(val)
+        else:           
+            for key, val in kwargs.items():
+                self.metrics[key].append(val)
         
     def train(self, model, optimizer, train_loader, val_loader, args):
         model.train()
@@ -180,4 +203,4 @@ class BaseAlgorithm:
         with open(save_file, 'wb') as f:
             pickle.dump(data, f)
         print(f'Success rate: {sum(successes)/len(successes)}')
-        print(f'Eval data saved to {save_file}.')
+        print(f'Eval data saved to {save_file}')

@@ -27,6 +27,8 @@ do
             --method $METHOD \
             --arch $ARCH \
             --num_models $NUM_MODELS \
-            --seed $SEED
+            --seed $SEED \
+            --use_indicator_beta \
+            --dagger_beta 1.0
     done
 done

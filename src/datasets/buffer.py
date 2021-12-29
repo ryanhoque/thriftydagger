@@ -42,6 +42,12 @@ class BufferDataset(Dataset):
 
         return obs, act, curr_size
 
+    def clear_buffer(self):
+        self.obs = torch.zeros(self.max_size, self.obs.shape[1])
+        self.act = torch.zeros(self.max_size, self.act.shape[1])
+        self.curr_size = 0
+        self.ptr = 0
+
     def update_buffer(self, obs, act) -> None:
         self.obs[self.ptr] = obs
         self.act[self.ptr] = act

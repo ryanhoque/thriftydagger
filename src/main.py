@@ -44,6 +44,7 @@ def parse_args():
     
     # Dagger-specific parameter beta
     parser.add_argument('--dagger_beta', type=float, default=0.9, help='DAgger parameter; policy will be (beta * expert_action) + (1-beta) * learned_policy_action')
+    parser.add_argument('--use_indicator_beta', action='store_true', help='DAgger parameter; policy will use beta=1 for first iteration and beta=0 for following iterations.')
     
     # Training parameters
     parser.add_argument('--epochs', type=int, default=5, help='Number of iterations to run overall method for')
@@ -109,7 +110,8 @@ def main(args):
     # Set up method
     if args.method == 'Dagger':
         algorithm = Dagger(model, model_kwargs, device=device, save_dir=save_dir, 
-                           max_traj_len=max_traj_len, beta=args.dagger_beta)
+                           max_traj_len=max_traj_len, beta=args.dagger_beta,
+                           use_indicator_beta=args.use_indicator_beta, max_num_labels=args.N)
     elif args.method == 'HGDagger':
         algorithm = HGDagger(model, model_kwargs, device=device, save_dir=save_dir, 
                              max_traj_len=max_traj_len)

@@ -1,7 +1,7 @@
 #!/bin/bash
 ARCH=MLP
 DATA_SOURCES=(oracle pi_r oracle_pi_r_mix)
-DATE=dec28
+DATE=dec28_test_fixed_N
 ENVIRONMENT=Reach2D
 METHOD=Dagger
 NS=(50 100 200 300 400 500 750 1000)
@@ -27,6 +27,8 @@ do
             --method $METHOD \
             --arch $ARCH \
             --num_models $NUM_MODELS \
-            --seed $SEED
+            --seed $SEED \
+            --use_indicator_beta \
+            --dagger_beta 1.0
     done
 done
