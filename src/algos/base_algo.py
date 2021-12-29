@@ -55,7 +55,7 @@ class BaseAlgorithm:
             success = False
             obs, act = [], []
             while traj_length <= self.max_traj_len and not success:
-                obs.append(curr_obs)
+                obs.append(curr_obs.cpu())
                 if (expert_mode and not auto_only):
                     # Expert mode (either human or oracle algorithm)
                     a = self._expert_pol(curr_obs, env, robosuite_cfg)
@@ -72,7 +72,7 @@ class BaseAlgorithm:
                         continue
                     a = self.model(curr_obs).to(self.device)
                     next_obs, _, _, _ = env.step(a)
-                act.append(a)
+                act.append(a.cpu())
                 traj_length += 1
                 success = env._check_success()
                 curr_obs = next_obs
