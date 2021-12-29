@@ -1,8 +1,8 @@
 import gym
 import numpy as np
 
-class CustomWrapper(gym.Env):
 
+class CustomWrapper(gym.Env):
     def __init__(self, env, render):
         self.env = env
         self.observation_space = env.observation_space
@@ -27,8 +27,8 @@ class CustomWrapper(gym.Env):
         # abstract 10 actions as 1 action
         # get rid of x/y rotation, which is unintuitive for remote teleop
         action_ = action.copy()
-        action_[3] = 0.
-        action_[4] = 0.
+        action_[3] = 0.0
+        action_[4] = 0.0
         self.env.step(action_)
         self.render()
         settle_action = np.zeros(7)

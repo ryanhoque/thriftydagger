@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 
+
 class LinearModel(nn.Module):
     def __init__(self, obs_dim, act_dim, scale=1.0, normalize=False, use_bias=False):
         super().__init__()
