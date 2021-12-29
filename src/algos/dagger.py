@@ -24,8 +24,11 @@ class Dagger(BaseAlgorithm):
             success = False
             obs, act = [], []
             while traj_length <= self.max_traj_len:
-                a_target = self._expert_pol(curr_obs, env, robosuite_cfg).detach()
-                a = self.beta * a_target + (1 - self.beta) * self.model(curr_obs).detach()
+                if not auto_only:
+                    a_target = self._expert_pol(curr_obs, env, robosuite_cfg).detach()
+                    a = self.beta * a_target + (1 - self.beta) * self.model(curr_obs).detach()
+                else:
+                    a = self.model(curr_obs).detach()
                 next_obs, _, _, _ = env.step(a)
                 obs.append(curr_obs)
                 act.append(a_target)
